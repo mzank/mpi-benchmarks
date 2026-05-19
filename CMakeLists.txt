@@ -19,6 +19,7 @@ if(ENABLE_DOCS)
     set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/docs")
 
     set(DOXYGEN_INPUT_DIRS
+        "${CMAKE_SOURCE_DIR}/src"
         "${CMAKE_SOURCE_DIR}/README.md"
     )
 
@@ -26,3 +27,5 @@ if(ENABLE_DOCS)
 
     include(cmake/Doxygen.cmake)
 endif()
+
+add_subdirectory(src/example_01_hello)
