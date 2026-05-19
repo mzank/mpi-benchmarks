@@ -1,0 +1,33 @@
+DOXYFILE_ENCODING = UTF-8
+
+PROJECT_NAME      = "@DOXYGEN_PROJECT_NAME@"
+PROJECT_NUMBER    = "@DOXYGEN_PROJECT_NUMBER@"
+
+OUTPUT_DIRECTORY  = "@DOXYGEN_OUTPUT_DIRECTORY@"
+
+INPUT             = @DOXYGEN_INPUT_DIRS_STR@
+RECURSIVE         = YES
+
+FILE_PATTERNS     = *.c *.h *.md
+
+EXCLUDE_PATTERNS  = */build/* \
+                    */CMakeFiles/* \
+                    */_deps/* \
+                    *.o \
+                    *.d \
+                    *.o.d \
+                    *.cmake
+
+MARKDOWN_SUPPORT = YES
+
+USE_MDFILE_AS_MAINPAGE = "@DOXYGEN_MAINPAGE@"
+
+EXTRACT_ALL = YES
+
+GENERATE_HTML = YES
+GENERATE_LATEX = NO
+
+HAVE_DOT = YES
+CALL_GRAPH = YES
+CALLER_GRAPH = YES
+DOT_IMAGE_FORMAT = svg
