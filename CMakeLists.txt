@@ -9,20 +9,41 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package(MPI REQUIRED)
 
-option(ENABLE_DOCS "Build documentation" ON)
+option(ENABLE_DOCS "Build Doxygen documentation" ON)
 
 if(ENABLE_DOCS)
-    find_package(Doxygen REQUIRED)
 
-    set(DOXYGEN_PROJECT_NAME "MPI Benchmarks")
-    set(DOXYGEN_PROJECT_NUMBER "${PROJECT_VERSION}")
-    set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/docs")
+    find_package(Doxygen)
 
-    set(DOXYGEN_INPUT_DIRS
-        "${CMAKE_SOURCE_DIR}/README.md"
-    )
+    if(DOXYGEN_FOUND)
 
-    set(DOXYGEN_MAINPAGE "${CMAKE_SOURCE_DIR}/README.md")
+        set(DOXYGEN_PROJECT_NAME "MPI Benchmarks")
+        set(DOXYGEN_PROJECT_NUMBER "${PROJECT_VERSION}")
 
-    include(cmake/Doxygen.cmake)
+        set(DOXYGEN_OUTPUT_DIRECTORY
+            "${CMAKE_BINARY_DIR}/docs"
+        )
+
+        set(DOXYGEN_INPUT_DIRS
+            "${CMAKE_SOURCE_DIR}/src"
+            "${CMAKE_SOURCE_DIR}/README.md"
+        )
+
+        set(DOXYGEN_MAINPAGE
+            "${CMAKE_SOURCE_DIR}/README.md"
+        )
+
+        include(cmake/Doxygen.cmake)
+
+    else()
+
+        message(WARNING
+            "Doxygen not found. "
+            "Documentation target 'docs' will not be available."
+        )
+
+    endif()
+
 endif()
+
+add_subdirectory(src/example_01_hello)
