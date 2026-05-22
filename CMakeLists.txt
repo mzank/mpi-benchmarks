@@ -47,3 +47,4 @@ if(ENABLE_DOCS)
 endif()
 
 add_subdirectory(src/example_01_hello)
+add_subdirectory(src/example_02_pingpong)
