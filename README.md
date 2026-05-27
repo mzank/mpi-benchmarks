@@ -16,6 +16,16 @@ src/example_01_hello/main.c
 
 A minimal MPI example demonstrating process initialization, rank identification, and basic error handling.
 
+### Ping-Pong Benchmark
+
+Path:
+
+```text
+src/example_02_pingpong/main.c
+```
+
+A point-to-point communication benchmark measuring latency and bandwidth between two MPI ranks. See the [Ping-Pong README](src/example_02_pingpong/README.md) for detailed instructions.
+
 ---
 
 ## Requirements
