@@ -85,6 +85,8 @@ build/docs/html/index.html
 
 ## Running the Examples
 
+In place of all examples, it is shown how to run the Hello World example locally and on an HPC cluster. See the example's README for detailed instructions.
+
 ### Local Execution
 
 Run the Hello World example locally with, e.g., four MPI processes:
