@@ -6,7 +6,7 @@ A collection of MPI benchmark and example applications implemented in C11. This 
 
 ## Included Examples
 
-### Hello World
+### MPI Hello World
 
 Path:
 
@@ -14,9 +14,9 @@ Path:
 src/example_01_hello/main.c
 ```
 
-A minimal MPI example demonstrating process initialization, rank identification, and basic error handling.
+A minimal MPI example demonstrating process initialization, rank identification, and basic error handling. See the [Hello World README](src/example_01_hello/README.md) for detailed instructions.
 
-### Ping-Pong Benchmark
+### MPI Ping-Pong Benchmark
 
 Path:
 
