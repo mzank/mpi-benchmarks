@@ -1,3 +1,25 @@
+/**
+ * @file main.c
+ * @brief Standard MPI Ping-Pong benchmark measuring latency and bandwidth.
+ *
+ * This benchmark measures the point-to-point communication performance
+ * between exactly two MPI ranks using MPI_Sendrecv.
+ *
+ * Build example:
+ * @code
+ * mpicc -std=c11 -Wall -Wextra -Wpedantic -O3 main.c -o example_02_pingpong
+ * @endcode
+ *
+ * Run example:
+ * @code
+ * mpirun -n 2 ./example_02_pingpong
+ * @endcode
+ *
+ * @author Marco Zank
+ * @date 2026
+ * @version 0.1
+ */
+
 #define _GNU_SOURCE
 
 #include <limits.h>
@@ -7,12 +29,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_MSG_SIZE ((size_t)1 << 24) /* 16 MiB */
+/** @brief Maximum message size (16 MiB). */
+#define MAX_MSG_SIZE ((size_t)1 << 24)
 
+/** @brief Number of iterations for small messages (<= 8 KiB). */
 #define ITER_SMALL 1000
+
+/** @brief Number of iterations for large messages (> 8 KiB). */
 #define ITER_LARGE 100
+
+/** @brief Number of warmup iterations. */
 #define WARMUP 20
 
+/**
+ * @brief Macro for MPI error checking.
+ *
+ * If the MPI call fails, it prints an error message and aborts the application.
+ */
 #define MPI_CHECK(call)                              \
     do                                               \
     {                                                \
@@ -31,6 +64,11 @@
         }                                            \
     } while (0)
 
+/**
+ * @brief Prints the CPU affinity mask and current CPU of the calling process.
+ *
+ * @param[in] rank The MPI rank of the calling process.
+ */
 static void print_affinity(const int rank)
 {
     cpu_set_t mask;
@@ -65,6 +103,11 @@ static void print_affinity(const int rank)
     }
 }
 
+/**
+ * @brief Prints SLURM-specific environment variables for the process.
+ *
+ * @param[in] rank The MPI rank of the calling process.
+ */
 static void print_slurm_info(const int rank)
 {
     const char *procid = getenv("SLURM_PROCID");
@@ -79,6 +122,18 @@ static void print_slurm_info(const int rank)
            nodeid ? nodeid : "N/A");
 }
 
+/**
+ * @brief Entry point for the Ping-Pong benchmark.
+ *
+ * Initializes MPI, validates the process count, performs the warmup
+ * and measurement loops for increasing message sizes, and finalizes MPI.
+ *
+ * @param[in] argc Argument count.
+ * @param[in] argv Argument vector.
+ *
+ * @retval EXIT_SUCCESS Success.
+ * @retval EXIT_FAILURE Failure (e.g., wrong number of ranks).
+ */
 int main(int argc, char *argv[])
 {
     int rank = 0;

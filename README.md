@@ -82,6 +82,7 @@ A build script is provided:
 If Doxygen is installed, HTML documentation can be generated with:
 
 ```bash
+cmake -S . -B build
 cmake --build build --target docs
 ```
 
