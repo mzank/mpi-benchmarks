@@ -1,8 +1,8 @@
 # MPI Ping-Pong Benchmark
 
-This example implements a standard MPI ping-pong benchmark to measure point-to-point communication performance between two MPI ranks.
-
 ## Overview
+
+This example implements a standard MPI ping-pong benchmark to measure point-to-point communication performance between two MPI ranks.
 
 The benchmark performs the following steps:
 1.  **Environment Check**: Prints CPU affinity and SLURM environment information for each rank.
@@ -48,7 +48,7 @@ sbatch src/example_02_pingpong/run_2nodes.slurm
 
 This script ensures one task is placed per node to force communication across the cluster interconnect.
 
-## Output
+## Expected Output
 
 The benchmark outputs a table with the following columns:
 - **Size(Bytes)**: The message size in bytes.

@@ -116,13 +116,15 @@ mpiexec -n 4 ./build/bin/example_01_hello
 
 ## Running on an HPC Cluster (SLURM)
 
-A SLURM submission script is provided for each example.
+A SLURM submission script is provided for each example. Logs and error reports are automatically saved in the `logs/` directory at the project root.
 
 Submit the Hello World example with:
 
 ```bash
 sbatch src/example_01_hello/run.slurm
 ```
+
+For the Ping-Pong benchmark, multiple scripts are provided for different scenarios (intra-node vs inter-node). See the [Ping-Pong README](src/example_02_pingpong/README.md) for details.
 
 Adjust the SLURM resource parameters in the script to match your cluster environment, such as:
 

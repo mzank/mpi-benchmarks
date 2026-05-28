@@ -1,6 +1,12 @@
 # MPI Hello World
 
+## Overview
+
 A minimal MPI example demonstrating process initialization, rank identification, and basic error handling.
+
+## Requirements
+
+- One or more MPI ranks.
 
 ## Local Execution
 
@@ -12,17 +18,17 @@ mpirun -n 4 ./build/bin/example_01_hello
 
 ## Running with SLURM
 
-A SLURM script is provided to run the example on a cluster node.
+A SLURM script is provided to run the example on a cluster node. Logs and error reports are automatically saved in the `logs/` directory at the project root.
 
 ```bash
 sbatch src/example_01_hello/run.slurm
 ```
 
-The script is configured by default to use 1 node and 4 tasks. Logs and error reports are saved in the `logs/` directory at the project root.
+The script is configured by default to use 1 node and 4 tasks.
 
-## Output
+## Expected Output
 
-Expected output format:
+Format:
 ```text
 [rank 0/4] Hello from MPI process.
 [rank 1/4] Hello from MPI process.
