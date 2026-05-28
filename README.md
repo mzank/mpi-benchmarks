@@ -132,6 +132,30 @@ To check the available CPU binding options supported by your cluster's SLURM con
 srun --cpu-bind=help /bin/true
 ```
 
+Example output:
+
+```text
+CPU bind options:
+    --cpu-bind=         Bind tasks to CPUs
+        q[uiet]         quietly bind before task runs (default)
+        v[erbose]       verbosely report binding before task runs
+        no[ne]          don't bind tasks to CPUs (default)
+        map_cpu:<list>  specify a CPU ID binding for each task
+                        where <list> is <cpuid1>,<cpuid2>,...<cpuidN>
+        mask_cpu:<list> specify a CPU ID binding mask for each task
+                        where <list> is <mask1>,<mask2>,...<maskN>
+        rank_ldom       bind task by rank to CPUs in a NUMA locality domain
+        map_ldom:<list> specify a NUMA locality domain ID for each task
+                        where <list> is <ldom1>,<ldom2>,...<ldomN>
+        mask_ldom:<list>specify a NUMA locality domain ID mask for each task
+                        where <list> is <mask1>,<mask2>,...<maskN>
+        sockets         auto-generated masks bind to sockets
+        cores           auto-generated masks bind to cores
+        threads         auto-generated masks bind to threads
+        ldoms           auto-generated masks bind to NUMA locality domains
+        help            show this help message
+```
+
 Adjust the SLURM resource parameters in the script to match your cluster environment, such as:
 
 - partition
