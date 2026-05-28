@@ -126,6 +126,12 @@ sbatch src/example_01_hello/run.slurm
 
 For the Ping-Pong benchmark, multiple scripts are provided for different scenarios (intra-node vs inter-node). See the [Ping-Pong README](src/example_02_pingpong/README.md) for details.
 
+To check the available CPU binding options supported by your cluster's SLURM configuration, you can run:
+
+```bash
+srun --cpu-bind=help /bin/true
+```
+
 Adjust the SLURM resource parameters in the script to match your cluster environment, such as:
 
 - partition
