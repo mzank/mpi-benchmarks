@@ -26,7 +26,7 @@ mpirun -n 2 ./build/bin/example_02_pingpong
 
 ## Running with SLURM
 
-Two SLURM scripts are provided to test different communication scenarios.
+Two SLURM scripts are provided to test different communication scenarios. Logs and error reports are automatically saved in the `logs/` directory at the project root.
 
 ### 1. Intra-node (Single Node)
 
@@ -54,5 +54,3 @@ The benchmark outputs a table with the following columns:
 - **Size(Bytes)**: The message size in bytes.
 - **Latency(us)**: The average one-way latency in microseconds.
 - **EffectiveBW(MiB/s)**: The achieved bandwidth in MiB/s.
-
-Logs and error reports are automatically saved in the `logs/` directory at the project root.
