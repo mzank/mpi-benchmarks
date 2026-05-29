@@ -2,12 +2,14 @@
  * @file main.c
  * @brief Minimal MPI "Hello World" example with error handling.
  *
- * Build example:
+ * Build example (manual):
  * @code
  * mpicc -std=c11 -Wall -Wextra -Wpedantic -O3 -march=native -flto main.c -o example_01_hello
  * @endcode
  *
- * Run example:
+ * @note The CMake build system places the binary in `build/bin/example_01_hello`.
+ *
+ * Run example (manual):
  * @code
  * mpirun -n 4 ./example_01_hello
  * @endcode

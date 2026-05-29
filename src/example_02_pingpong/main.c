@@ -5,12 +5,14 @@
  * This benchmark measures the point-to-point communication performance
  * between exactly two MPI ranks using MPI_Sendrecv.
  *
- * Build example:
+ * Build example (manual):
  * @code
  * mpicc -std=c11 -Wall -Wextra -Wpedantic -O3 -march=native -flto main.c -o example_02_pingpong
  * @endcode
  *
- * Run example:
+ * @note The CMake build system places the binary in `build/bin/example_02_pingpong`.
+ *
+ * Run example (manual):
  * @code
  * mpirun -n 2 ./example_02_pingpong
  * @endcode
