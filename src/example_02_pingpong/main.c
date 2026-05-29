@@ -15,6 +15,16 @@
  * mpirun -n 2 ./example_02_pingpong
  * @endcode
  *
+ * Expected output:
+ * @code
+ * # MPI Ping-Pong Benchmark
+ * ...
+ * # Size(Bytes)   Latency(us)     EffectiveBW(MiB/s)
+ *        1 bytes      0.45 us      4.22 MiB/s
+ *        2 bytes      0.45 us      8.42 MiB/s
+ * ...
+ * @endcode
+ *
  * @author Marco Zank
  * @date 2026
  * @version 0.1
@@ -23,11 +33,12 @@
 #define _GNU_SOURCE
 
 #include <limits.h>
-#include <mpi.h>
 #include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include <mpi.h>
 
 /** @brief Maximum message size (16 MiB). */
 #define MAX_MSG_SIZE ((size_t)1 << 24)
@@ -123,16 +134,16 @@ static void print_slurm_info(const int rank)
 }
 
 /**
- * @brief Entry point for the Ping-Pong benchmark.
+ * @brief Entry point of the MPI application.
  *
- * Initializes MPI, validates the process count, performs the warmup
- * and measurement loops for increasing message sizes, and finalizes MPI.
+ * Initializes the MPI runtime, validates the process count, performs the warmup
+ * and measurement loops for increasing message sizes, and finalizes MPI cleanly.
  *
- * @param[in] argc Argument count.
- * @param[in] argv Argument vector.
+ * @param[in] argc Argument count from the command line.
+ * @param[in] argv Argument vector from the command line.
  *
- * @retval EXIT_SUCCESS Success.
- * @retval EXIT_FAILURE Failure (e.g., wrong number of ranks).
+ * @retval EXIT_SUCCESS Program completed successfully.
+ * @retval EXIT_FAILURE MPI initialization or finalization failed.
  */
 int main(int argc, char *argv[])
 {
