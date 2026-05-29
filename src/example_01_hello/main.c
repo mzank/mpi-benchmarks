@@ -25,35 +25,33 @@
  * @version 0.1
  */
 
-#include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdnoreturn.h>
+
+#include <mpi.h>
 
 /**
- * @brief Abort the MPI program after reporting an error.
+ * @brief Macro for MPI error checking.
  *
- * Prints a diagnostic message to stderr and terminates all processes
- * in the communicator using MPI_Abort().
- *
- * @param[in] msg error message.
- * @param[in] err MPI error code returned by an MPI routine.
- *
- * @warning
- * MPI_Abort() terminates all ranks in the communicator immediately.
- *
- * @post
- * This function never returns.
+ * If the MPI call fails, it prints an error message and aborts the application.
  */
-static noreturn void die(const char *msg, int err)
-{
-    fprintf(stderr, "%s (MPI error code: %d)\n", msg, err);
-
-    MPI_Abort(MPI_COMM_WORLD, err);
-
-    /* Defensive fallback in case MPI_Abort returns unexpectedly. */
-    exit(EXIT_FAILURE);
-}
+#define MPI_CHECK(call)                              \
+    do                                               \
+    {                                                \
+        int err__ = (call);                          \
+        if (err__ != MPI_SUCCESS)                    \
+        {                                            \
+            char errstr[MPI_MAX_ERROR_STRING];       \
+            int len__ = 0;                           \
+            MPI_Error_string(err__, errstr, &len__); \
+            fprintf(stderr,                          \
+                    "MPI error at %s:%d -> %s\n",    \
+                    __FILE__,                        \
+                    __LINE__,                        \
+                    errstr);                         \
+            MPI_Abort(MPI_COMM_WORLD, err__);        \
+        }                                            \
+    } while (0)
 
 /**
  * @brief Entry point of the MPI application.
@@ -67,30 +65,15 @@ static noreturn void die(const char *msg, int err)
  * @retval EXIT_SUCCESS Program completed successfully.
  * @retval EXIT_FAILURE MPI initialization or finalization failed.
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-    int err = MPI_Init(&argc, &argv);
-
-    if (err != MPI_SUCCESS)
-    {
-        fprintf(stderr, "MPI_Init failed\n");
-        return EXIT_FAILURE;
-    }
+    MPI_CHECK(MPI_Init(&argc, &argv));
 
     int rank = -1;
     int size = -1;
 
-    err = MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    if (err != MPI_SUCCESS)
-    {
-        die("MPI_Comm_rank failed", err);
-    }
-
-    err = MPI_Comm_size(MPI_COMM_WORLD, &size);
-    if (err != MPI_SUCCESS)
-    {
-        die("MPI_Comm_size failed", err);
-    }
+    MPI_CHECK(MPI_Comm_rank(MPI_COMM_WORLD, &rank));
+    MPI_CHECK(MPI_Comm_size(MPI_COMM_WORLD, &size));
 
     printf("[rank %d/%d] Hello from MPI process.\n", rank, size);
 
@@ -100,13 +83,7 @@ int main(int argc, char **argv)
      */
     fflush(stdout);
 
-    err = MPI_Finalize();
-
-    if (err != MPI_SUCCESS)
-    {
-        fprintf(stderr, "MPI_Finalize failed\n");
-        return EXIT_FAILURE;
-    }
+    MPI_CHECK(MPI_Finalize());
 
     return EXIT_SUCCESS;
 }
