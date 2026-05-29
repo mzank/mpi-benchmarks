@@ -4,7 +4,7 @@
  *
  * Build example:
  * @code
- * mpicc -std=c11 -Wall -Wextra -Wpedantic -O3 main.c -o example_01_hello
+ * mpicc -std=c11 -Wall -Wextra -Wpedantic -O3 -march=native -flto main.c -o example_01_hello
  * @endcode
  *
  * Run example:
