@@ -9,6 +9,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 find_package(MPI REQUIRED)
 
+add_compile_options(
+    -Wall
+    -Wextra
+    -Wpedantic
+    -O3
+    -march=native
+    -flto
+)
+
+add_link_options(
+    -flto
+)
+
 option(ENABLE_DOCS "Build Doxygen documentation" ON)
 
 if(ENABLE_DOCS)
