@@ -1,0 +1,444 @@
+Tasks: 2
+Nodes: 1
+Binary: /.../mpi-benchmarks/build/bin/example_02_pingpong
+=== NUMA topology ===
+node0
+available: 4 nodes (0-3)
+node 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119
+node 0 size: 127778 MB
+node 0 free: 80427 MB
+node 1 cpus: 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143
+node 1 size: 128719 MB
+node 1 free: 122318 MB
+node 2 cpus: 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167
+node 2 size: 128719 MB
+node 2 free: 123208 MB
+node 3 cpus: 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191
+node 3 size: 128706 MB
+node 3 free: 111149 MB
+node distances:
+node     0    1    2    3 
+   0:   10   32   32   32 
+   1:   32   10   32   32 
+   2:   32   32   10   32 
+   3:   32   32   32   10 
+
+==============================
+ 1) Same socket, different cores
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 1 
+Rank 1 current logical CPU: 1
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.13 us      7.60 MiB/s
+       2 bytes      0.17 us     10.99 MiB/s
+       4 bytes      0.10 us     36.41 MiB/s
+       8 bytes      0.10 us     73.06 MiB/s
+      16 bytes      0.11 us    144.85 MiB/s
+      32 bytes      0.11 us    275.19 MiB/s
+      64 bytes      0.11 us    552.75 MiB/s
+     128 bytes      0.12 us   1056.61 MiB/s
+     256 bytes      0.33 us    736.39 MiB/s
+     512 bytes      0.14 us   3502.72 MiB/s
+    1024 bytes      1.09 us    898.02 MiB/s
+    2048 bytes      0.95 us   2055.86 MiB/s
+    4096 bytes      1.09 us   3592.34 MiB/s
+    8192 bytes      1.23 us   6341.70 MiB/s
+   16384 bytes      1.50 us  10431.58 MiB/s
+   32768 bytes      2.05 us  15245.69 MiB/s
+   65536 bytes      3.14 us  19917.05 MiB/s
+  131072 bytes      5.27 us  23714.35 MiB/s
+  262144 bytes      9.91 us  25219.70 MiB/s
+  524288 bytes     31.36 us  15944.94 MiB/s
+ 1048576 bytes     30.33 us  32969.88 MiB/s
+ 2097152 bytes     49.30 us  40571.87 MiB/s
+ 4194304 bytes     89.11 us  44886.68 MiB/s
+ 8388608 bytes    350.89 us  22798.98 MiB/s
+16777216 bytes   1009.84 us  15844.07 MiB/s
+
+==============================
+ 2) Same socket, SMT siblings
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 96 
+Rank 1 current logical CPU: 96
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.19 us      5.09 MiB/s
+       2 bytes      0.24 us      7.82 MiB/s
+       4 bytes      0.16 us     24.07 MiB/s
+       8 bytes      0.17 us     44.19 MiB/s
+      16 bytes      0.16 us     95.53 MiB/s
+      32 bytes      0.16 us    191.14 MiB/s
+      64 bytes      0.16 us    376.57 MiB/s
+     128 bytes      0.16 us    763.70 MiB/s
+     256 bytes      0.40 us    612.75 MiB/s
+     512 bytes      0.18 us   2774.55 MiB/s
+    1024 bytes      1.16 us    839.44 MiB/s
+    2048 bytes      1.22 us   1596.01 MiB/s
+    4096 bytes      1.34 us   2919.83 MiB/s
+    8192 bytes      1.53 us   5108.93 MiB/s
+   16384 bytes      1.86 us   8422.70 MiB/s
+   32768 bytes      2.51 us  12450.15 MiB/s
+   65536 bytes      4.15 us  15062.00 MiB/s
+  131072 bytes      7.53 us  16600.42 MiB/s
+  262144 bytes     14.10 us  17726.72 MiB/s
+  524288 bytes     26.95 us  18550.26 MiB/s
+ 1048576 bytes     50.51 us  19799.87 MiB/s
+ 2097152 bytes     80.75 us  24768.52 MiB/s
+ 4194304 bytes    142.42 us  28086.65 MiB/s
+ 8388608 bytes    387.10 us  20666.55 MiB/s
+16777216 bytes    974.25 us  16422.96 MiB/s
+
+==============================
+ 3) Different NUMA domains: NUMA 0 <-> NUMA 1
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 24 
+Rank 1 current logical CPU: 24
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.69 us      1.37 MiB/s
+       2 bytes      0.66 us      2.88 MiB/s
+       4 bytes      0.66 us      5.77 MiB/s
+       8 bytes      0.67 us     11.34 MiB/s
+      16 bytes      0.67 us     22.91 MiB/s
+      32 bytes      0.67 us     45.55 MiB/s
+      64 bytes      0.80 us     75.87 MiB/s
+     128 bytes      0.87 us    140.93 MiB/s
+     256 bytes      1.04 us    234.68 MiB/s
+     512 bytes      0.91 us    535.76 MiB/s
+    1024 bytes      2.85 us    343.15 MiB/s
+    2048 bytes      2.84 us    687.33 MiB/s
+    4096 bytes      2.99 us   1308.14 MiB/s
+    8192 bytes      3.08 us   2535.82 MiB/s
+   16384 bytes      3.20 us   4876.39 MiB/s
+   32768 bytes      3.67 us   8526.58 MiB/s
+   65536 bytes      4.76 us  13117.38 MiB/s
+  131072 bytes      6.71 us  18636.34 MiB/s
+  262144 bytes     10.67 us  23433.71 MiB/s
+  524288 bytes     20.48 us  24413.26 MiB/s
+ 1048576 bytes     35.18 us  28421.70 MiB/s
+ 2097152 bytes     55.86 us  35806.42 MiB/s
+ 4194304 bytes    101.68 us  39340.17 MiB/s
+ 8388608 bytes    195.14 us  40997.01 MiB/s
+16777216 bytes    850.01 us  18823.23 MiB/s
+
+==============================
+ 4) Different NUMA domains: NUMA 0 <-> NUMA 2
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 48 
+Rank 1 current logical CPU: 48
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.88 us      1.08 MiB/s
+       2 bytes      0.85 us      2.25 MiB/s
+       4 bytes      0.85 us      4.50 MiB/s
+       8 bytes      0.85 us      9.02 MiB/s
+      16 bytes      0.85 us     17.99 MiB/s
+      32 bytes      0.84 us     36.18 MiB/s
+      64 bytes      1.00 us     60.97 MiB/s
+     128 bytes      1.13 us    107.84 MiB/s
+     256 bytes      1.34 us    181.90 MiB/s
+     512 bytes      1.16 us    421.77 MiB/s
+    1024 bytes      3.99 us    244.77 MiB/s
+    2048 bytes      4.07 us    479.47 MiB/s
+    4096 bytes      4.19 us    932.08 MiB/s
+    8192 bytes      4.24 us   1841.72 MiB/s
+   16384 bytes      4.53 us   3451.73 MiB/s
+   32768 bytes      4.79 us   6517.86 MiB/s
+   65536 bytes      5.85 us  10675.51 MiB/s
+  131072 bytes      7.86 us  15906.08 MiB/s
+  262144 bytes     12.23 us  20445.47 MiB/s
+  524288 bytes     22.22 us  22500.04 MiB/s
+ 1048576 bytes     41.35 us  24182.83 MiB/s
+ 2097152 bytes     73.65 us  27154.40 MiB/s
+ 4194304 bytes    119.00 us  33614.65 MiB/s
+ 8388608 bytes    216.79 us  36902.40 MiB/s
+16777216 bytes   1000.43 us  15993.15 MiB/s
+
+==============================
+ 5) Different NUMA domains: NUMA 0 <-> NUMA 3
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 72 
+Rank 1 current logical CPU: 72
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.87 us      1.10 MiB/s
+       2 bytes      0.83 us      2.30 MiB/s
+       4 bytes      0.83 us      4.60 MiB/s
+       8 bytes      0.83 us      9.16 MiB/s
+      16 bytes      0.83 us     18.28 MiB/s
+      32 bytes      0.80 us     38.37 MiB/s
+      64 bytes      0.94 us     64.92 MiB/s
+     128 bytes      1.14 us    107.11 MiB/s
+     256 bytes      1.33 us    183.47 MiB/s
+     512 bytes      1.16 us    420.48 MiB/s
+    1024 bytes      3.54 us    275.51 MiB/s
+    2048 bytes      3.67 us    531.47 MiB/s
+    4096 bytes      3.78 us   1032.06 MiB/s
+    8192 bytes      4.02 us   1945.76 MiB/s
+   16384 bytes      4.36 us   3587.07 MiB/s
+   32768 bytes      4.61 us   6786.00 MiB/s
+   65536 bytes      5.58 us  11194.76 MiB/s
+  131072 bytes      7.03 us  17791.37 MiB/s
+  262144 bytes     11.14 us  22432.11 MiB/s
+  524288 bytes     21.06 us  23742.05 MiB/s
+ 1048576 bytes     40.73 us  24553.58 MiB/s
+ 2097152 bytes     66.68 us  29992.78 MiB/s
+ 4194304 bytes    113.49 us  35244.35 MiB/s
+ 8388608 bytes    211.17 us  37884.03 MiB/s
+16777216 bytes    951.32 us  16818.81 MiB/s
+
+==============================
+ 6) Different NUMA domains: NUMA 1 <-> NUMA 2
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 24 
+Rank 0 current logical CPU: 24
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 48 
+Rank 1 current logical CPU: 48
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.85 us      1.13 MiB/s
+       2 bytes      0.74 us      2.56 MiB/s
+       4 bytes      0.78 us      4.89 MiB/s
+       8 bytes      0.82 us      9.35 MiB/s
+      16 bytes      0.83 us     18.34 MiB/s
+      32 bytes      0.84 us     36.29 MiB/s
+      64 bytes      1.07 us     56.87 MiB/s
+     128 bytes      1.04 us    117.79 MiB/s
+     256 bytes      1.32 us    185.50 MiB/s
+     512 bytes      1.16 us    419.71 MiB/s
+    1024 bytes      3.71 us    263.54 MiB/s
+    2048 bytes      3.74 us    522.14 MiB/s
+    4096 bytes      3.89 us   1004.98 MiB/s
+    8192 bytes      3.98 us   1961.53 MiB/s
+   16384 bytes      4.05 us   3860.25 MiB/s
+   32768 bytes      4.55 us   6861.99 MiB/s
+   65536 bytes      5.68 us  11005.03 MiB/s
+  131072 bytes      7.77 us  16079.90 MiB/s
+  262144 bytes     12.21 us  20482.66 MiB/s
+  524288 bytes     25.43 us  19661.16 MiB/s
+ 1048576 bytes     50.79 us  19689.99 MiB/s
+ 2097152 bytes     74.24 us  26938.15 MiB/s
+ 4194304 bytes    122.02 us  32780.53 MiB/s
+ 8388608 bytes    224.30 us  35666.93 MiB/s
+16777216 bytes   1172.11 us  13650.56 MiB/s
+
+==============================
+ 7) Different NUMA domains: NUMA 1 <-> NUMA 3
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 24 
+Rank 0 current logical CPU: 24
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 72 
+Rank 1 current logical CPU: 72
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.87 us      1.10 MiB/s
+       2 bytes      0.83 us      2.29 MiB/s
+       4 bytes      0.80 us      4.76 MiB/s
+       8 bytes      0.84 us      9.06 MiB/s
+      16 bytes      0.84 us     18.23 MiB/s
+      32 bytes      0.84 us     36.49 MiB/s
+      64 bytes      0.96 us     63.54 MiB/s
+     128 bytes      1.10 us    111.44 MiB/s
+     256 bytes      1.33 us    184.06 MiB/s
+     512 bytes      1.20 us    407.97 MiB/s
+    1024 bytes      3.61 us    270.55 MiB/s
+    2048 bytes      3.90 us    500.50 MiB/s
+    4096 bytes      3.98 us    982.14 MiB/s
+    8192 bytes      4.13 us   1889.89 MiB/s
+   16384 bytes      4.26 us   3663.74 MiB/s
+   32768 bytes      4.63 us   6754.97 MiB/s
+   65536 bytes      5.67 us  11031.06 MiB/s
+  131072 bytes      7.66 us  16317.83 MiB/s
+  262144 bytes     11.61 us  21527.98 MiB/s
+  524288 bytes     21.50 us  23259.78 MiB/s
+ 1048576 bytes     37.43 us  26718.11 MiB/s
+ 2097152 bytes     59.37 us  33686.43 MiB/s
+ 4194304 bytes    107.36 us  37258.27 MiB/s
+ 8388608 bytes    208.25 us  38415.65 MiB/s
+16777216 bytes    952.79 us  16792.71 MiB/s
+
+==============================
+ 8) Different NUMA domains: NUMA 2 <-> NUMA 3
+==============================
+Rank 0 running on node0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 48 
+Rank 0 current logical CPU: 48
+Rank 1 running on node0
+Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
+Rank 1 affinity mask: 72 
+Rank 1 current logical CPU: 72
+
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   Throughput       : round-trip throughput
+#
+# Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
+       1 bytes      0.65 us      1.47 MiB/s
+       2 bytes      0.63 us      3.04 MiB/s
+       4 bytes      0.62 us      6.12 MiB/s
+       8 bytes      0.62 us     12.21 MiB/s
+      16 bytes      0.63 us     24.10 MiB/s
+      32 bytes      0.62 us     49.10 MiB/s
+      64 bytes      0.72 us     84.47 MiB/s
+     128 bytes      0.84 us    145.88 MiB/s
+     256 bytes      1.03 us    236.92 MiB/s
+     512 bytes      0.84 us    578.58 MiB/s
+    1024 bytes      2.93 us    333.25 MiB/s
+    2048 bytes      2.96 us    658.84 MiB/s
+    4096 bytes      3.07 us   1271.12 MiB/s
+    8192 bytes      3.17 us   2461.67 MiB/s
+   16384 bytes      3.35 us   4666.95 MiB/s
+   32768 bytes      3.82 us   8189.39 MiB/s
+   65536 bytes      4.97 us  12571.49 MiB/s
+  131072 bytes      7.04 us  17765.33 MiB/s
+  262144 bytes     11.34 us  22051.89 MiB/s
+  524288 bytes     21.77 us  22966.45 MiB/s
+ 1048576 bytes     42.42 us  23574.42 MiB/s
+ 2097152 bytes     69.43 us  28804.10 MiB/s
+ 4194304 bytes    108.86 us  36744.64 MiB/s
+ 8388608 bytes    201.89 us  39624.91 MiB/s
+16777216 bytes   1019.44 us  15694.91 MiB/s
+
+========================================
+ DONE
+========================================
