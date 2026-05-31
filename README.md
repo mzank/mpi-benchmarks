@@ -26,6 +26,12 @@ src/example_02_pingpong/main.c
 
 A point-to-point communication benchmark measuring latency and bandwidth between two MPI ranks. See the [Ping-Pong README](src/example_02_pingpong/README.md) for detailed instructions.
 
+#### Example Results
+Benchmark results for the AMD Instinct MI300A architecture are available in the repository:
+- [1-Node (Intra-node)](src/example_02_pingpong/logs/1node/)
+- [1-Node MI300A (NUMA test)](src/example_02_pingpong/logs/1node_4mi300a/)
+- [2-Nodes (Inter-node)](src/example_02_pingpong/logs/2nodes/)
+
 ---
 
 ## Requirements
@@ -124,7 +130,7 @@ Submit the Hello World example with:
 sbatch src/example_01_hello/run.slurm
 ```
 
-For the Ping-Pong benchmark, multiple scripts are provided for different scenarios (intra-node vs inter-node). See the [Ping-Pong README](src/example_02_pingpong/README.md) for details.
+For the Ping-Pong benchmark, multiple scripts are provided for different scenarios (intra-node vs inter-node), including specialized configurations for the AMD Instinct MI300A architecture. See the [Ping-Pong README](src/example_02_pingpong/README.md) for details.
 
 To check the available CPU binding options supported by your cluster's SLURM configuration, you can run:
 

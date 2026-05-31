@@ -1,0 +1,10 @@
+cpu-bind=MASK - node0, task  0  0 [898265]: mask 0x1 set
+cpu-bind=MASK - node0, task  1  1 [898266]: mask 0x1000000 set
+cpu-bind=MASK - node0, task  0  0 [898287]: mask 0x1000000000000000000000001 set
+cpu-bind=MASK - node0, task  1  1 [898288]: mask 0x1000000000000000000000001000000 set
+cpu-bind=MASK - node0, task  0  0 [898309]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=MASK - node0, task  1  1 [898310]: mask 0xffffff000000000000000000ffffff000000 set
+cpu-bind=MASK - node0, task  0  0 [898331]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=MASK - node0, task  1  1 [898332]: mask 0xffffff000000000000000000ffffff000000 set
+cpu-bind=LDRANK - node0, task  0  0 [898352]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=LDRANK - node0, task  1  1 [898353]: mask 0xffffff000000000000000000ffffff000000 set
