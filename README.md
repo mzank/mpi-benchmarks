@@ -29,6 +29,7 @@ A point-to-point communication benchmark measuring latency and bandwidth between
 #### Example Results
 Benchmark results for the AMD Instinct MI300A architecture are available in the repository:
 - [1-Node (Intra-node)](src/example_02_pingpong/logs/1node/)
+- [1-Node MI300A (NUMA test)](src/example_02_pingpong/logs/1node_4mi300a/)
 - [2-Nodes (Inter-node)](src/example_02_pingpong/logs/2nodes/)
 
 ---
