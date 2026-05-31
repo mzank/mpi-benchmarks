@@ -26,6 +26,11 @@ src/example_02_pingpong/main.c
 
 A point-to-point communication benchmark measuring latency and bandwidth between two MPI ranks. See the [Ping-Pong README](src/example_02_pingpong/README.md) for detailed instructions.
 
+#### Example Results
+Benchmark results for the AMD Instinct MI300A architecture are available in the repository:
+- [1-Node (Intra-node)](src/example_02_pingpong/logs/1node/)
+- [2-Nodes (Inter-node)](src/example_02_pingpong/logs/2nodes/)
+
 ---
 
 ## Requirements
