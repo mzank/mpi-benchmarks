@@ -38,6 +38,12 @@ sbatch src/example_02_pingpong/run_1node.slurm
 
 This script tests various CPU binding options (Default, Core, Socket, NUMA LDOM, Rank-aware NUMA) to show the impact of process placement on shared-memory performance.
 
+For a node with 4 AMD MI300A, a script is available that tests specific NUMA domain pairings:
+
+```bash
+sbatch src/example_02_pingpong/run_1node_4mi300a.slurm
+```
+
 ### 2. Inter-node (Two Nodes)
 
 Measure network performance between two processes running on different physical nodes.
