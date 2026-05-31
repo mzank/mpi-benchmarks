@@ -65,9 +65,6 @@ The benchmark outputs a table with the following columns:
 
 Benchmark results for the AMD Instinct MI300A architecture are available in the `logs/` directory:
 
-- **[1-Node Results](logs/1node/)**: Intra-node performance using various CPU binding strategies on a node with 4 AMD MI300A.
-  - `pingpong_1node_4mi300a.out`: Main benchmark output and performance tables.
-  - `pingpong_1node_4mi300a.err`: Slurm affinity verification and binding masks.
+- **[1-Node Results](logs/1node/)**: Intra-node performance using standard CPU binding strategies (Cores, Sockets, NUMA) on a single node with 4 AMD MI300A.
+- **[1-Node MI300A Specialized Results](logs/1node_4mi300a/)**: Detailed intra-node performance for specific NUMA domain pairings on a node with 4 AMD MI300A.
 - **[2-Node Results](logs/2nodes/)**: Inter-node performance across two nodes with 4 AMD MI300A.
-  - `pingpong_2nodes_4mi300a.out`: Network latency and bandwidth results across the interconnect.
-  - `pingpong_2nodes_4mi300a.err`: Slurm affinity verification for multi-node placement.
