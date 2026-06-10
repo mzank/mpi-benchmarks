@@ -21,6 +21,10 @@
  * @code
  * # MPI Ping-Pong Benchmark
  * ...
+ * # Metrics
+ * #   Latency          : one-way latency
+ * #   EffectiveBW      : effective bandwidth
+ * #
  * # Size(Bytes)   Latency(us)     EffectiveBW(MiB/s)
  *        1 bytes      0.45 us      4.22 MiB/s
  *        2 bytes      0.45 us      8.42 MiB/s
@@ -228,7 +232,7 @@ int main(int argc, char *argv[])
         printf("#\n");
         printf("# Metrics\n");
         printf("#   Latency          : one-way latency\n");
-        printf("#   Throughput       : round-trip throughput\n");
+        printf("#   EffectiveBW      : effective bandwidth\n");
         printf("#\n");
         printf("# Size(Bytes)\tLatency(us)\tEffectiveBW(MiB/s)\n");
     }
