@@ -22,6 +22,10 @@
  * @code
  * # MPI Ring Benchmark
  * ...
+ * # Metrics
+ * #   Exchange         : full ring exchange time
+ * #   AggregateRingBW  : aggregate bandwidth across the ring
+ * #
  * # Size(Bytes)   Exchange(us)    AggregateRingBW(MiB/s)
  *        1 bytes      1.20 us        3.18 MiB/s
  *        2 bytes      1.25 us        6.10 MiB/s
@@ -294,6 +298,10 @@ int main(int argc, char *argv[])
         printf("#   Small iterations : %d\n", ITER_SMALL);
         printf("#   Large iterations : %d\n", ITER_LARGE);
         printf("#   MPI_Wtick        : %.9e seconds\n", MPI_Wtick());
+        printf("#\n");
+        printf("# Metrics\n");
+        printf("#   Exchange         : full ring exchange time\n");
+        printf("#   AggregateRingBW  : aggregate bandwidth across the ring\n");
         printf("#\n");
         printf("# Size(Bytes)\tExchange(us)\tAggregateRingBW(MiB/s)\n");
     }
