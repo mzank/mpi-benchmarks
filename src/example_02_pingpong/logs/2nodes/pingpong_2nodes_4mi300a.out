@@ -118,7 +118,7 @@ Rank 1 current logical CPU: 0
 #
 # Metrics
 #   Latency          : one-way latency
-#   Throughput       : round-trip throughput
+#   EffectiveBW      : effective bandwidth
 #
 # Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
        1 bytes      1.67 us      0.57 MiB/s
