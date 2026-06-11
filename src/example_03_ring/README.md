@@ -25,6 +25,42 @@ To run the benchmark locally on your machine using 4 processes:
 mpirun -n 4 ./build/bin/example_03_ring
 ```
 
+## Running with SLURM
+
+Multiple SLURM scripts are provided to test different communication scenarios. Logs and error reports are automatically saved in the `logs/` directory at the project root.
+
+### 1. Intra-node (Single Node)
+
+Measure communication performance within a single physical node.
+
+**Standard Bindings:**
+```bash
+sbatch src/example_03_ring/run_1node.slurm
+```
+This script tests various CPU binding options (Default, Core, Socket, NUMA LDOM, Rank-aware NUMA) to show the impact of process placement on shared-memory ring performance.
+
+**Scaling Test:**
+```bash
+sbatch src/example_03_ring/run_1node_scaling.slurm
+```
+This script evaluates how the aggregate ring bandwidth scales as more ranks are added on a single node.
+
+### 2. Inter-node (Multi-Node)
+
+Measure aggregate network performance across multiple physical nodes.
+
+**Two Nodes:**
+```bash
+sbatch src/example_03_ring/run_2nodes.slurm
+```
+
+**Four Nodes:**
+```bash
+sbatch src/example_03_ring/run_4nodes.slurm
+```
+
+These scripts ensure tasks are distributed across nodes to evaluate the cluster interconnect performance in a ring topology.
+
 ## Expected Output
 
 The benchmark outputs a table with the following columns:
