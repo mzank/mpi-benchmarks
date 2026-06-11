@@ -149,6 +149,8 @@ sbatch src/example_01_hello/run.slurm
 
 For the Ping-Pong benchmark, multiple scripts are provided for different scenarios (intra-node vs inter-node), including specialized configurations for the AMD Instinct MI300A architecture. See the [Ping-Pong README](src/example_02_pingpong/README.md) for details.
 
+Similarly, the Ring benchmark includes multiple scripts for scaling tests and multi-node execution. See the [Ring README](src/example_03_ring/README.md) for details.
+
 To check the available CPU binding options supported by your cluster's SLURM configuration, you can run:
 
 ```bash
