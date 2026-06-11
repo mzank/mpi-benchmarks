@@ -2,7 +2,7 @@ Tasks: 2
 Nodes: 1
 Binary: /.../mpi-benchmarks/build/bin/example_02_pingpong
 === NUMA topology ===
-node0
+computenode0
 available: 4 nodes (0-3)
 node 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119
 node 0 size: 127778 MB
@@ -26,11 +26,11 @@ node     0    1    2    3
 ==============================
  1) DEFAULT
 ==============================
-Rank 0 running on node0
+Rank 0 running on computenode0
 Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
 Rank 0 affinity mask: 0 
 Rank 0 current logical CPU: 0
-Rank 1 running on node0
+Rank 1 running on computenode0
 Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
 Rank 1 affinity mask: 24 
 Rank 1 current logical CPU: 24
@@ -78,11 +78,11 @@ Rank 1 current logical CPU: 24
 ==============================
  2) CORE binding
 ==============================
-Rank 0 running on node0
+Rank 0 running on computenode0
 Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
 Rank 0 affinity mask: 0 96 
 Rank 0 current logical CPU: 0
-Rank 1 running on node0
+Rank 1 running on computenode0
 Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
 Rank 1 affinity mask: 24 120 
 Rank 1 current logical CPU: 24
@@ -98,7 +98,7 @@ Rank 1 current logical CPU: 24
 #
 # Metrics
 #   Latency          : one-way latency
-#   Throughput       : round-trip throughput
+#   EffectiveBW      : effective bandwidth
 #
 # Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
        1 bytes      0.65 us      1.46 MiB/s
@@ -130,11 +130,11 @@ Rank 1 current logical CPU: 24
 ==============================
  3) SOCKET binding
 ==============================
-Rank 0 running on node0
+Rank 0 running on computenode0
 Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
 Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
 Rank 0 current logical CPU: 0
-Rank 1 running on node0
+Rank 1 running on computenode0
 Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
 Rank 1 affinity mask: 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 
 Rank 1 current logical CPU: 131
@@ -150,7 +150,7 @@ Rank 1 current logical CPU: 131
 #
 # Metrics
 #   Latency          : one-way latency
-#   Throughput       : round-trip throughput
+#   EffectiveBW      : effective bandwidth
 #
 # Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
        1 bytes      0.68 us      1.40 MiB/s
@@ -182,11 +182,11 @@ Rank 1 current logical CPU: 131
 ==============================
  4) NUMA (LDOM) binding
 ==============================
-Rank 0 running on node0
+Rank 0 running on computenode0
 Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
 Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
 Rank 0 current logical CPU: 0
-Rank 1 running on node0
+Rank 1 running on computenode0
 Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
 Rank 1 affinity mask: 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 
 Rank 1 current logical CPU: 133
@@ -202,7 +202,7 @@ Rank 1 current logical CPU: 133
 #
 # Metrics
 #   Latency          : one-way latency
-#   Throughput       : round-trip throughput
+#   EffectiveBW      : effective bandwidth
 #
 # Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
        1 bytes      0.68 us      1.40 MiB/s
@@ -234,11 +234,11 @@ Rank 1 current logical CPU: 133
 ==============================
  5) RANK-AWARE NUMA
 ==============================
-Rank 0 running on node0
+Rank 0 running on computenode0
 Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
 Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
 Rank 0 current logical CPU: 0
-Rank 1 running on node0
+Rank 1 running on computenode0
 Rank 1 SLURM info: PROCID=1 LOCALID=1 NODEID=0
 Rank 1 affinity mask: 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 
 Rank 1 current logical CPU: 130
@@ -254,7 +254,7 @@ Rank 1 current logical CPU: 130
 #
 # Metrics
 #   Latency          : one-way latency
-#   Throughput       : round-trip throughput
+#   EffectiveBW      : effective bandwidth
 #
 # Size(Bytes)	Latency(us)	EffectiveBW(MiB/s)
        1 bytes      0.68 us      1.41 MiB/s
