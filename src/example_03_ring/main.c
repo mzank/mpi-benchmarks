@@ -1,6 +1,6 @@
 /**
  * @file main.c
- * @brief MPI Ring benchmark measuring aggregate bandwidth and latency.
+ * @brief MPI Ring benchmark measuring aggregate bandwidth and exchange time.
  *
  * This benchmark measures the performance of a ring communication pattern
  * where each rank sends data to its successor and receives from its
