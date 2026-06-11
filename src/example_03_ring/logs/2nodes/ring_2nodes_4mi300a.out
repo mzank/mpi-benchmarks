@@ -1,0 +1,288 @@
+Tasks: 2
+Nodes: 2
+Binary: /.../mpi-benchmarks/build/bin/example_03_ring
+=== NUMA topology ===
+
+==============================
+ 1) DEFAULT
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 
+Rank 1 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 2
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.27 us      0.58 MiB/s
+       2 bytes      3.32 us      1.15 MiB/s
+       4 bytes      3.28 us      2.32 MiB/s
+       8 bytes      3.31 us      4.61 MiB/s
+      16 bytes      3.21 us      9.50 MiB/s
+      32 bytes      3.26 us     18.71 MiB/s
+      64 bytes      3.16 us     38.68 MiB/s
+     128 bytes      3.26 us     74.93 MiB/s
+     256 bytes      4.23 us    115.48 MiB/s
+     512 bytes      4.57 us    213.85 MiB/s
+    1024 bytes      4.20 us    464.86 MiB/s
+    2048 bytes      4.41 us    885.52 MiB/s
+    4096 bytes      4.42 us   1769.03 MiB/s
+    8192 bytes      4.87 us   3210.81 MiB/s
+   16384 bytes      5.38 us   5812.52 MiB/s
+   32768 bytes      8.83 us   7081.23 MiB/s
+   65536 bytes     10.50 us  11901.18 MiB/s
+  131072 bytes     13.52 us  18497.87 MiB/s
+  262144 bytes     19.19 us  26048.45 MiB/s
+  524288 bytes     30.49 us  32792.83 MiB/s
+ 1048576 bytes     52.98 us  37748.04 MiB/s
+ 2097152 bytes     97.73 us  40927.87 MiB/s
+ 4194304 bytes    187.53 us  42659.14 MiB/s
+ 8388608 bytes    367.13 us  43581.34 MiB/s
+16777216 bytes    726.84 us  44026.40 MiB/s
+  Verification data:
+    rank 0 : bw=44026.400 MiB/s  checksum=    16777216  expected=    16777216
+    rank 1 : bw=44025.597 MiB/s  checksum=           0  expected=           0
+
+==============================
+ 2) CORE binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 96 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 96 
+Rank 1 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 2
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.19 us      0.60 MiB/s
+       2 bytes      3.20 us      1.19 MiB/s
+       4 bytes      3.37 us      2.26 MiB/s
+       8 bytes      3.20 us      4.77 MiB/s
+      16 bytes      3.20 us      9.53 MiB/s
+      32 bytes      3.17 us     19.26 MiB/s
+      64 bytes      3.22 us     37.95 MiB/s
+     128 bytes      3.31 us     73.87 MiB/s
+     256 bytes      4.12 us    118.61 MiB/s
+     512 bytes      4.16 us    234.82 MiB/s
+    1024 bytes      4.23 us    462.08 MiB/s
+    2048 bytes      4.37 us    893.46 MiB/s
+    4096 bytes      4.51 us   1732.67 MiB/s
+    8192 bytes      5.14 us   3038.32 MiB/s
+   16384 bytes      5.36 us   5825.30 MiB/s
+   32768 bytes      8.88 us   7036.58 MiB/s
+   65536 bytes     10.53 us  11867.40 MiB/s
+  131072 bytes     13.38 us  18689.12 MiB/s
+  262144 bytes     19.02 us  26288.81 MiB/s
+  524288 bytes     30.39 us  32909.94 MiB/s
+ 1048576 bytes     52.80 us  37880.88 MiB/s
+ 2097152 bytes     97.69 us  40944.50 MiB/s
+ 4194304 bytes    187.59 us  42645.13 MiB/s
+ 8388608 bytes    367.36 us  43554.05 MiB/s
+16777216 bytes    726.93 us  44020.78 MiB/s
+  Verification data:
+    rank 0 : bw=44020.779 MiB/s  checksum=    16777216  expected=    16777216
+    rank 1 : bw=44019.650 MiB/s  checksum=           0  expected=           0
+
+==============================
+ 3) SOCKET binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 2
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.25 us      0.59 MiB/s
+       2 bytes      3.19 us      1.20 MiB/s
+       4 bytes      3.32 us      2.30 MiB/s
+       8 bytes      3.16 us      4.84 MiB/s
+      16 bytes      3.12 us      9.79 MiB/s
+      32 bytes      3.13 us     19.53 MiB/s
+      64 bytes      3.11 us     39.20 MiB/s
+     128 bytes      3.18 us     76.83 MiB/s
+     256 bytes      4.18 us    116.71 MiB/s
+     512 bytes      4.31 us    226.73 MiB/s
+    1024 bytes      4.38 us    446.05 MiB/s
+    2048 bytes      4.44 us    880.29 MiB/s
+    4096 bytes      4.60 us   1696.75 MiB/s
+    8192 bytes      5.11 us   3059.88 MiB/s
+   16384 bytes      5.54 us   5642.50 MiB/s
+   32768 bytes      8.95 us   6984.37 MiB/s
+   65536 bytes     10.68 us  11702.41 MiB/s
+  131072 bytes     13.51 us  18503.77 MiB/s
+  262144 bytes     19.34 us  25857.42 MiB/s
+  524288 bytes     30.68 us  32590.73 MiB/s
+ 1048576 bytes     52.86 us  37838.18 MiB/s
+ 2097152 bytes     97.69 us  40945.25 MiB/s
+ 4194304 bytes    187.64 us  42634.36 MiB/s
+ 8388608 bytes    367.17 us  43576.72 MiB/s
+16777216 bytes    726.81 us  44027.73 MiB/s
+  Verification data:
+    rank 0 : bw=44027.726 MiB/s  checksum=    16777216  expected=    16777216
+    rank 1 : bw=44027.523 MiB/s  checksum=           0  expected=           0
+
+==============================
+ 4) NUMA (LDOM) binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 108
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 2
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.20 us      0.60 MiB/s
+       2 bytes      3.23 us      1.18 MiB/s
+       4 bytes      3.32 us      2.30 MiB/s
+       8 bytes      3.14 us      4.86 MiB/s
+      16 bytes      3.17 us      9.62 MiB/s
+      32 bytes      3.08 us     19.84 MiB/s
+      64 bytes      3.10 us     39.36 MiB/s
+     128 bytes      3.29 us     74.11 MiB/s
+     256 bytes      4.19 us    116.55 MiB/s
+     512 bytes      4.29 us    227.57 MiB/s
+    1024 bytes      4.30 us    454.64 MiB/s
+    2048 bytes      4.45 us    878.30 MiB/s
+    4096 bytes      4.52 us   1727.71 MiB/s
+    8192 bytes      4.88 us   3200.74 MiB/s
+   16384 bytes      5.55 us   5627.96 MiB/s
+   32768 bytes      8.96 us   6978.68 MiB/s
+   65536 bytes     10.62 us  11775.39 MiB/s
+  131072 bytes     13.71 us  18233.71 MiB/s
+  262144 bytes     19.13 us  26133.00 MiB/s
+  524288 bytes     30.49 us  32793.92 MiB/s
+ 1048576 bytes     52.90 us  37803.98 MiB/s
+ 2097152 bytes     97.80 us  40901.84 MiB/s
+ 4194304 bytes    187.49 us  42670.06 MiB/s
+ 8388608 bytes    367.14 us  43580.39 MiB/s
+16777216 bytes    726.91 us  44021.94 MiB/s
+  Verification data:
+    rank 0 : bw=44021.942 MiB/s  checksum=    16777216  expected=    16777216
+    rank 1 : bw=44020.648 MiB/s  checksum=           0  expected=           0
+
+==============================
+ 5) RANK-AWARE NUMA
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 2
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.24 us      0.59 MiB/s
+       2 bytes      3.09 us      1.23 MiB/s
+       4 bytes      3.41 us      2.23 MiB/s
+       8 bytes      3.10 us      4.92 MiB/s
+      16 bytes      3.04 us     10.05 MiB/s
+      32 bytes      2.98 us     20.47 MiB/s
+      64 bytes      2.96 us     41.31 MiB/s
+     128 bytes      3.08 us     79.31 MiB/s
+     256 bytes      4.13 us    118.17 MiB/s
+     512 bytes      4.19 us    232.96 MiB/s
+    1024 bytes      4.20 us    464.93 MiB/s
+    2048 bytes      4.34 us    901.00 MiB/s
+    4096 bytes      4.70 us   1661.77 MiB/s
+    8192 bytes      4.76 us   3282.03 MiB/s
+   16384 bytes      5.32 us   5878.00 MiB/s
+   32768 bytes      9.00 us   6947.81 MiB/s
+   65536 bytes     10.49 us  11913.66 MiB/s
+  131072 bytes     13.45 us  18592.93 MiB/s
+  262144 bytes     19.01 us  26302.62 MiB/s
+  524288 bytes     30.43 us  32862.35 MiB/s
+ 1048576 bytes     52.90 us  37810.70 MiB/s
+ 2097152 bytes     97.71 us  40935.70 MiB/s
+ 4194304 bytes    187.45 us  42677.44 MiB/s
+ 8388608 bytes    367.09 us  43586.38 MiB/s
+16777216 bytes    726.70 us  44034.56 MiB/s
+  Verification data:
+    rank 0 : bw=44034.560 MiB/s  checksum=    16777216  expected=    16777216
+    rank 1 : bw=44034.545 MiB/s  checksum=           0  expected=           0
+
+========================================
+ DONE
+========================================
