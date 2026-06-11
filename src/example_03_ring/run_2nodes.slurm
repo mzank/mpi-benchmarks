@@ -29,7 +29,7 @@ echo "Nodes: ${SLURM_JOB_NUM_NODES}"
 echo "Binary: ${BINARY}"
 
 echo "=== NUMA topology ==="
-srun -N 2 -n 2 bash -c 'hostname; numactl --hardware'
+srun --output=logs/%x_topo_%t_%j.out --error=logs/%x_topo_%t_%j.err -N 2 -n 2 bash -c 'hostname; numactl --hardware'
 
 echo ""
 echo "=============================="
