@@ -192,7 +192,6 @@ int main(int argc, char *argv[])
                    processor_name);
 
             print_slurm_info(rank);
-
             print_affinity(rank);
 
             fflush(stdout);
@@ -244,9 +243,8 @@ int main(int argc, char *argv[])
         if (msg_size > (size_t)INT_MAX)
             break;
 
-        int count = (int)msg_size;
-
-        int iters = (msg_size <= 8192) ? ITER_SMALL : ITER_LARGE;
+        const int count = (int)msg_size;
+        const int iters = (msg_size <= 8192) ? ITER_SMALL : ITER_LARGE;
 
         for (int i = 0; i < WARMUP; i++)
         {
@@ -257,7 +255,7 @@ int main(int argc, char *argv[])
 
         MPI_CHECK(MPI_Barrier(MPI_COMM_WORLD));
 
-        double start = MPI_Wtime();
+        const double start = MPI_Wtime();
 
         for (int i = 0; i < iters; i++)
         {
@@ -266,16 +264,19 @@ int main(int argc, char *argv[])
                                    MPI_COMM_WORLD, MPI_STATUS_IGNORE));
         }
 
-        double end = MPI_Wtime();
+        const double end = MPI_Wtime();
 
         if (rank == 0)
         {
-            double rtt = (end - start) / iters;
-            double latency_us = (rtt / 2.0) * 1e6;
-            double bw = (2.0 * msg_size) / rtt / (1024.0 * 1024.0);
+            const double rtt = (end - start) / (double)iters;
+            const double latency_us = (rtt / 2.0) * 1e6;
+            const double bw_MiBs =
+                (2.0 * msg_size) / rtt / (1024.0 * 1024.0);
 
             printf("%8zu bytes  %8.2f us  %8.2f MiB/s\n",
-                   msg_size, latency_us, bw);
+                   msg_size,
+                   latency_us,
+                   bw_MiBs);
         }
     }
 
