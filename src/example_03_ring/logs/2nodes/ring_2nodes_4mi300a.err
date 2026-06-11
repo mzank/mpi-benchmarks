@@ -1,0 +1,10 @@
+cpu-bind=MASK - computenode0, task  0  0 [201547]: mask 0x1 set
+cpu-bind=MASK - computenode1, task  1  0 [292842]: mask 0x1 set
+cpu-bind=MASK - computenode0, task  0  0 [201569]: mask 0x1000000000000000000000001 set
+cpu-bind=MASK - computenode1, task  1  0 [292857]: mask 0x1000000000000000000000001 set
+cpu-bind=MASK - computenode0, task  0  0 [201594]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=MASK - computenode1, task  1  0 [292872]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=MASK - computenode0, task  0  0 [201615]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=MASK - computenode1, task  1  0 [292886]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=LDRANK - computenode1, task  1  0 [292900]: mask 0xffffff000000000000000000ffffff set
+cpu-bind=LDRANK - computenode0, task  0  0 [201636]: mask 0xffffff000000000000000000ffffff set

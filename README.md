@@ -32,6 +32,23 @@ Benchmark results for the AMD Instinct MI300A architecture are available in the 
 - [1-Node MI300A (NUMA test)](src/example_02_pingpong/logs/1node_4mi300a/)
 - [2-Nodes (Inter-node)](src/example_02_pingpong/logs/2nodes/)
 
+### MPI Ring Benchmark
+
+Path:
+
+```text
+src/example_03_ring/main.c
+```
+
+An aggregate communication benchmark measuring bandwidth and latency in a ring communication pattern across multiple ranks. See the [Ring README](src/example_03_ring/README.md) for detailed instructions.
+
+#### Example Results
+Benchmark results for the AMD Instinct MI300A architecture are available in the repository:
+- [1-Node (Intra-node)](src/example_03_ring/logs/1node/)
+- [1-Node Scaling](src/example_03_ring/logs/1node_scaling/)
+- [2-Nodes (Inter-node)](src/example_03_ring/logs/2nodes/)
+- [4-Nodes (Inter-node)](src/example_03_ring/logs/4nodes/)
+
 ---
 
 ## Requirements
