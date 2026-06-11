@@ -1,0 +1,338 @@
+Tasks: 4
+Nodes: 4
+Binary: /.../mpi-benchmarks/build/bin/example_03_ring
+=== NUMA topology ===
+
+==============================
+ 1) DEFAULT
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 
+Rank 2 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 
+Rank 1 current logical CPU: 0
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 
+Rank 3 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.37 us      1.13 MiB/s
+       2 bytes      3.19 us      2.39 MiB/s
+       4 bytes      3.40 us      4.49 MiB/s
+       8 bytes      3.16 us      9.65 MiB/s
+      16 bytes      3.59 us     17.02 MiB/s
+      32 bytes      3.05 us     40.02 MiB/s
+      64 bytes      3.16 us     77.26 MiB/s
+     128 bytes      3.11 us    156.99 MiB/s
+     256 bytes      4.45 us    219.61 MiB/s
+     512 bytes      4.29 us    454.94 MiB/s
+    1024 bytes      4.30 us    908.59 MiB/s
+    2048 bytes      4.45 us   1757.34 MiB/s
+    4096 bytes      4.54 us   3438.24 MiB/s
+    8192 bytes      5.17 us   6048.41 MiB/s
+   16384 bytes      5.47 us  11427.80 MiB/s
+   32768 bytes      9.06 us  13800.35 MiB/s
+   65536 bytes     10.60 us  23593.05 MiB/s
+  131072 bytes     13.83 us  36142.18 MiB/s
+  262144 bytes     20.50 us  48789.84 MiB/s
+  524288 bytes     31.41 us  63673.56 MiB/s
+ 1048576 bytes     53.96 us  74125.43 MiB/s
+ 2097152 bytes     99.02 us  80791.64 MiB/s
+ 4194304 bytes    189.04 us  84638.23 MiB/s
+ 8388608 bytes    368.50 us  86838.96 MiB/s
+16777216 bytes    728.14 us  87895.17 MiB/s
+  Verification data:
+    rank 0 : bw=87895.167 MiB/s  checksum=    50331648  expected=    50331648
+    rank 1 : bw=87899.643 MiB/s  checksum=           0  expected=           0
+    rank 2 : bw=87897.914 MiB/s  checksum=    16777216  expected=    16777216
+    rank 3 : bw=87893.128 MiB/s  checksum=    33554432  expected=    33554432
+
+==============================
+ 2) CORE binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 96 
+Rank 0 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 96 
+Rank 2 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 96 
+Rank 1 current logical CPU: 0
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 96 
+Rank 3 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.44 us      1.11 MiB/s
+       2 bytes      3.23 us      2.36 MiB/s
+       4 bytes      3.37 us      4.53 MiB/s
+       8 bytes      3.19 us      9.57 MiB/s
+      16 bytes      3.17 us     19.28 MiB/s
+      32 bytes      3.07 us     39.81 MiB/s
+      64 bytes      3.01 us     81.00 MiB/s
+     128 bytes      3.09 us    157.78 MiB/s
+     256 bytes      4.53 us    215.78 MiB/s
+     512 bytes      4.21 us    463.48 MiB/s
+    1024 bytes      4.55 us    857.74 MiB/s
+    2048 bytes      4.36 us   1790.13 MiB/s
+    4096 bytes      4.43 us   3530.00 MiB/s
+    8192 bytes      5.15 us   6067.47 MiB/s
+   16384 bytes      5.44 us  11494.42 MiB/s
+   32768 bytes      8.97 us  13938.09 MiB/s
+   65536 bytes     10.67 us  23433.41 MiB/s
+  131072 bytes     14.06 us  35549.87 MiB/s
+  262144 bytes     20.34 us  49168.63 MiB/s
+  524288 bytes     31.48 us  63524.31 MiB/s
+ 1048576 bytes     54.40 us  73524.02 MiB/s
+ 2097152 bytes     99.00 us  80804.04 MiB/s
+ 4194304 bytes    188.95 us  84680.34 MiB/s
+ 8388608 bytes    368.45 us  86850.60 MiB/s
+16777216 bytes    730.47 us  87614.30 MiB/s
+  Verification data:
+    rank 0 : bw=87614.300 MiB/s  checksum=    50331648  expected=    50331648
+    rank 1 : bw=87616.601 MiB/s  checksum=           0  expected=           0
+    rank 2 : bw=87615.485 MiB/s  checksum=    16777216  expected=    16777216
+    rank 3 : bw=87615.417 MiB/s  checksum=    33554432  expected=    33554432
+
+==============================
+ 3) SOCKET binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 119
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 2 current logical CPU: 98
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 3 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.22 us      1.18 MiB/s
+       2 bytes      3.36 us      2.27 MiB/s
+       4 bytes      3.34 us      4.57 MiB/s
+       8 bytes      3.30 us      9.24 MiB/s
+      16 bytes      3.52 us     17.36 MiB/s
+      32 bytes      3.20 us     38.10 MiB/s
+      64 bytes      3.13 us     78.02 MiB/s
+     128 bytes      3.27 us    149.55 MiB/s
+     256 bytes      4.30 us    227.15 MiB/s
+     512 bytes      4.34 us    450.24 MiB/s
+    1024 bytes      4.38 us    890.88 MiB/s
+    2048 bytes      4.48 us   1743.18 MiB/s
+    4096 bytes      4.85 us   3219.51 MiB/s
+    8192 bytes      4.89 us   6394.60 MiB/s
+   16384 bytes      5.38 us  11616.00 MiB/s
+   32768 bytes      9.03 us  13841.31 MiB/s
+   65536 bytes     10.60 us  23577.05 MiB/s
+  131072 bytes     14.31 us  34937.28 MiB/s
+  262144 bytes     20.13 us  49665.08 MiB/s
+  524288 bytes     31.36 us  63784.64 MiB/s
+ 1048576 bytes     53.62 us  74602.95 MiB/s
+ 2097152 bytes     98.75 us  81015.49 MiB/s
+ 4194304 bytes    190.54 us  83971.40 MiB/s
+ 8388608 bytes    368.20 us  86910.09 MiB/s
+16777216 bytes    727.63 us  87956.97 MiB/s
+  Verification data:
+    rank 0 : bw=87956.967 MiB/s  checksum=    50331648  expected=    50331648
+    rank 1 : bw=87956.685 MiB/s  checksum=           0  expected=           0
+    rank 2 : bw=87953.518 MiB/s  checksum=    16777216  expected=    16777216
+    rank 3 : bw=87955.046 MiB/s  checksum=    33554432  expected=    33554432
+
+==============================
+ 4) NUMA (LDOM) binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 113
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 0
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 3 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 2 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.26 us      1.17 MiB/s
+       2 bytes      3.33 us      2.29 MiB/s
+       4 bytes      3.36 us      4.55 MiB/s
+       8 bytes      3.15 us      9.68 MiB/s
+      16 bytes      3.19 us     19.11 MiB/s
+      32 bytes      3.40 us     35.85 MiB/s
+      64 bytes      3.06 us     79.84 MiB/s
+     128 bytes      3.41 us    143.02 MiB/s
+     256 bytes      4.24 us    230.42 MiB/s
+     512 bytes      4.23 us    462.13 MiB/s
+    1024 bytes      4.26 us    918.03 MiB/s
+    2048 bytes      4.39 us   1777.73 MiB/s
+    4096 bytes      4.76 us   3280.03 MiB/s
+    8192 bytes      4.86 us   6436.40 MiB/s
+   16384 bytes      5.51 us  11338.42 MiB/s
+   32768 bytes      8.98 us  13919.76 MiB/s
+   65536 bytes     10.74 us  23273.91 MiB/s
+  131072 bytes     14.72 us  33959.87 MiB/s
+  262144 bytes     20.45 us  48902.94 MiB/s
+  524288 bytes     31.55 us  63400.87 MiB/s
+ 1048576 bytes     54.14 us  73877.63 MiB/s
+ 2097152 bytes     99.08 us  80743.53 MiB/s
+ 4194304 bytes    188.85 us  84723.79 MiB/s
+ 8388608 bytes    368.83 us  86760.44 MiB/s
+16777216 bytes    728.40 us  87864.26 MiB/s
+  Verification data:
+    rank 0 : bw=87864.262 MiB/s  checksum=    50331648  expected=    50331648
+    rank 1 : bw=87867.590 MiB/s  checksum=           0  expected=           0
+    rank 2 : bw=87861.751 MiB/s  checksum=    16777216  expected=    16777216
+    rank 3 : bw=87863.167 MiB/s  checksum=    33554432  expected=    33554432
+
+==============================
+ 5) RANK-AWARE NUMA
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 3
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 3 current logical CPU: 17
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 2 current logical CPU: 0
+
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+#
+# Size(Bytes)	Exchange(us)	AggregateRingBW(MiB/s)
+       1 bytes      3.30 us      1.16 MiB/s
+       2 bytes      3.14 us      2.43 MiB/s
+       4 bytes      3.36 us      4.55 MiB/s
+       8 bytes      3.31 us      9.21 MiB/s
+      16 bytes      3.47 us     17.58 MiB/s
+      32 bytes      3.12 us     39.09 MiB/s
+      64 bytes      3.11 us     78.42 MiB/s
+     128 bytes      3.20 us    152.78 MiB/s
+     256 bytes      4.23 us    231.06 MiB/s
+     512 bytes      4.42 us    441.67 MiB/s
+    1024 bytes      4.25 us    918.51 MiB/s
+    2048 bytes      4.39 us   1780.33 MiB/s
+    4096 bytes      4.51 us   3462.98 MiB/s
+    8192 bytes      4.90 us   6383.60 MiB/s
+   16384 bytes      5.43 us  11510.72 MiB/s
+   32768 bytes      9.13 us  13687.19 MiB/s
+   65536 bytes     10.82 us  23101.86 MiB/s
+  131072 bytes     14.27 us  35032.04 MiB/s
+  262144 bytes     20.70 us  48305.28 MiB/s
+  524288 bytes     32.07 us  62370.17 MiB/s
+ 1048576 bytes     54.74 us  73070.97 MiB/s
+ 2097152 bytes    100.00 us  80003.00 MiB/s
+ 4194304 bytes    189.11 us  84607.13 MiB/s
+ 8388608 bytes    369.33 us  86643.31 MiB/s
+16777216 bytes    728.99 us  87792.14 MiB/s
+  Verification data:
+    rank 0 : bw=87792.138 MiB/s  checksum=    50331648  expected=    50331648
+    rank 1 : bw=87792.871 MiB/s  checksum=           0  expected=           0
+    rank 2 : bw=87792.232 MiB/s  checksum=    16777216  expected=    16777216
+    rank 3 : bw=87792.598 MiB/s  checksum=    33554432  expected=    33554432
+
+========================================
+ DONE
+========================================
