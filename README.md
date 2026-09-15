@@ -49,6 +49,16 @@ Benchmark results for the AMD Instinct MI300A architecture are available in the 
 - [2-Nodes (Inter-node)](src/example_03_ring/logs/2nodes/)
 - [4-Nodes (Inter-node)](src/example_03_ring/logs/4nodes/)
 
+### MPI Broadcast Benchmark
+
+Path:
+
+```text
+src/example_04_broadcast/main.c
+```
+
+An MPI broadcast benchmark measuring performance of MPI_Bcast across multiple ranks. See the [Broadcast README](src/example_04_broadcast/README.md) for detailed instructions.
+
 ---
 
 ## Requirements
