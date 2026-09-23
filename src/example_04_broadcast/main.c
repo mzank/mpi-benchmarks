@@ -22,8 +22,8 @@
  * # MPI Broadcast Benchmark
  * ...
  * # Metrics
- * #   Broadcast        : broadcast time
- * #   EffectiveBW      : effective bandwidth across all processes
+ * #   Broadcast        : average per-iteration time of the slowest MPI rank
+ * #   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
  * #
  * # Size(Bytes)   Broadcast(us)    EffectiveBW(MiB/s)
  *        1 bytes      1.20 us        3.18 MiB/s
@@ -280,8 +280,8 @@ int main(int argc, char *argv[])
         printf("#   MPI_Wtick        : %.9e seconds\n", MPI_Wtick());
         printf("#\n");
         printf("# Metrics\n");
-        printf("#   Broadcast        : broadcast time\n");
-        printf("#   EffectiveBW      : effective bandwidth across all processes\n");
+        printf("#   Broadcast        : average per-iteration time of the slowest MPI rank\n");
+        printf("#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time\n");
         printf("#\n");
         printf("# Size(Bytes)\tBroadcast(us)\tEffectiveBW(MiB/s)\n");
     }
@@ -302,8 +302,9 @@ int main(int argc, char *argv[])
             broadcast_exchange(buffer, count, 0);
         }
 
-        /* Clear receive buffer after warmup so that the timed loop
-         * must actively transfer data to pass checksum verification. */
+        /* Reset non-root buffers after warmup so that the final
+         * checksum verifies that the timed broadcasts populated
+         * the receive buffers with the root's data. */
         if (rank != 0)
         {
             memset(buffer, 0, msg_size);
@@ -406,11 +407,9 @@ int main(int argc, char *argv[])
                         (uint64_t)0xAA * (uint64_t)msg_size;
 
                     printf("    rank %d : "
-                           "bw=%9.3f MiB/s  "
                            "checksum=%12" PRIu64 "  "
                            "expected=%12" PRIu64 "\n",
                            r,
-                           all_bw[r],
                            all_checksum[r],
                            expected_checksum);
                 }

@@ -11,7 +11,7 @@ The benchmark performs the following steps:
     *   Small messages (≤ 8 KiB) use 1,000 iterations.
     *   Large messages (> 8 KiB) use 100 iterations.
 4.  **Verification**: Calculates a checksum of the received data to ensure integrity.
-5.  **Reporting**: Calculates and displays the average broadcast time (μs) and effective bandwidth (MiB/s).
+5.  **Reporting**: Calculates and displays the average per-iteration time (μs) of the slowest MPI rank and the effective bandwidth (MiB/s) as aggregate data volume delivered to non-root ranks per unit time.
 
 ## Requirements
 
@@ -29,8 +29,8 @@ mpirun -n 4 ./build/bin/example_04_broadcast
 
 The benchmark outputs a table with the following columns:
 - **Size(Bytes)**: The message size in bytes.
-- **Broadcast(us)**: The average broadcast time in microseconds.
-- **EffectiveBW(MiB/s)**: The achieved effective bandwidth across all processes in MiB/s.
+- **Broadcast(us)**: The average per-iteration time of the slowest MPI rank in microseconds.
+- **EffectiveBW(MiB/s)**: The aggregate data volume delivered to non-root ranks per unit time in MiB/s.
 
 ## Verification
 
