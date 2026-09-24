@@ -310,8 +310,6 @@ int main(int argc, char *argv[])
             memset(buffer, 0, msg_size);
         }
 
-        MPI_CHECK(MPI_Barrier(MPI_COMM_WORLD));
-
         double local_elapsed = 0.0;
 
         for (int i = 0; i < iters; i++)
