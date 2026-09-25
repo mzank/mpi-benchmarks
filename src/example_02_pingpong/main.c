@@ -157,6 +157,7 @@ int main(int argc, char *argv[])
     int size = 0;
 
     MPI_CHECK(MPI_Init(&argc, &argv));
+    MPI_CHECK(MPI_Comm_set_errhandler(MPI_COMM_WORLD, MPI_ERRORS_RETURN));
 
     MPI_CHECK(MPI_Comm_rank(MPI_COMM_WORLD, &rank));
     MPI_CHECK(MPI_Comm_size(MPI_COMM_WORLD, &size));
@@ -206,6 +207,8 @@ int main(int argc, char *argv[])
     if (!sendbuf || !recvbuf)
     {
         fprintf(stderr, "malloc failed\n");
+        free(sendbuf);
+        free(recvbuf);
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
 
