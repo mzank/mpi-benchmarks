@@ -39,6 +39,7 @@
 
 #define _GNU_SOURCE
 
+#include <inttypes.h>
 #include <limits.h>
 #include <sched.h>
 #include <stdint.h>
@@ -215,6 +216,7 @@ int main(int argc, char *argv[])
     int size = 0;
 
     MPI_CHECK(MPI_Init(&argc, &argv));
+    MPI_CHECK(MPI_Comm_set_errhandler(MPI_COMM_WORLD, MPI_ERRORS_RETURN));
 
     MPI_CHECK(MPI_Comm_rank(MPI_COMM_WORLD, &rank));
     MPI_CHECK(MPI_Comm_size(MPI_COMM_WORLD, &size));
@@ -282,6 +284,10 @@ int main(int argc, char *argv[])
         if (!all_bw || !all_checksum)
         {
             fprintf(stderr, "malloc failed\n");
+            free(all_bw);
+            free(all_checksum);
+            free(sendbuf);
+            free(recvbuf);
             MPI_Abort(MPI_COMM_WORLD, 1);
         }
     }
@@ -387,10 +393,10 @@ int main(int argc, char *argv[])
                     ok = 0;
 
                     fprintf(stderr,
-                            "Verification failed: rank %d expected %llu got %llu\n",
+                            "Verification failed: rank %d expected %" PRIu64 " got %" PRIu64 "\n",
                             r,
-                            (unsigned long long)expected,
-                            (unsigned long long)all_checksum[r]);
+                            expected,
+                            all_checksum[r]);
                 }
             }
 
@@ -408,12 +414,12 @@ int main(int argc, char *argv[])
 
                     printf("    rank %d : "
                            "bw=%8.3f MiB/s  "
-                           "checksum=%12llu  "
-                           "expected=%12llu\n",
+                           "checksum=%12" PRIu64 "  "
+                           "expected=%12" PRIu64 "\n",
                            r,
                            all_bw[r],
-                           (unsigned long long)all_checksum[r],
-                           (unsigned long long)expected_checksum);
+                           all_checksum[r],
+                           expected_checksum);
                 }
             }
 
