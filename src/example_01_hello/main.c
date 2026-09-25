@@ -70,6 +70,7 @@
 int main(int argc, char *argv[])
 {
     MPI_CHECK(MPI_Init(&argc, &argv));
+    MPI_CHECK(MPI_Comm_set_errhandler(MPI_COMM_WORLD, MPI_ERRORS_RETURN));
 
     int rank = -1;
     int size = -1;
