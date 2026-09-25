@@ -1,0 +1,338 @@
+Tasks: 4
+Nodes: 4
+Binary: /.../mpi-benchmarks/build/bin/example_04_broadcast
+=== NUMA topology ===
+
+==============================
+ 1) DEFAULT
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 
+Rank 1 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 
+Rank 2 current logical CPU: 0
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 
+Rank 3 current logical CPU: 0
+
+# MPI Broadcast Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Broadcast        : average per-iteration time of the slowest MPI rank
+#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
+#
+# Size(Bytes)	Broadcast(us)	EffectiveBW(MiB/s)
+       1 bytes      4.48 us      0.64 MiB/s
+       2 bytes      4.16 us      1.38 MiB/s
+       4 bytes      4.21 us      2.72 MiB/s
+       8 bytes      4.15 us      5.52 MiB/s
+      16 bytes      4.14 us     11.06 MiB/s
+      32 bytes      4.02 us     22.76 MiB/s
+      64 bytes      4.13 us     44.38 MiB/s
+     128 bytes      4.21 us     87.04 MiB/s
+     256 bytes      4.90 us    149.53 MiB/s
+     512 bytes      4.96 us    295.37 MiB/s
+    1024 bytes      5.36 us    546.17 MiB/s
+    2048 bytes      5.06 us   1157.71 MiB/s
+    4096 bytes      5.11 us   2292.01 MiB/s
+    8192 bytes      5.60 us   4183.15 MiB/s
+   16384 bytes      6.76 us   6929.63 MiB/s
+   32768 bytes     10.83 us   8653.37 MiB/s
+   65536 bytes     19.46 us   9633.30 MiB/s
+  131072 bytes     29.13 us  12875.16 MiB/s
+  262144 bytes     46.99 us  15959.53 MiB/s
+  524288 bytes     77.02 us  19476.24 MiB/s
+ 1048576 bytes    140.69 us  21324.09 MiB/s
+ 2097152 bytes    269.08 us  22298.12 MiB/s
+ 4194304 bytes    524.43 us  22882.20 MiB/s
+ 8388608 bytes   1034.60 us  23197.27 MiB/s
+16777216 bytes   2053.91 us  23370.01 MiB/s
+  Verification data:
+    rank 0 : checksum=  2852126720  expected=  2852126720
+    rank 1 : checksum=  2852126720  expected=  2852126720
+    rank 2 : checksum=  2852126720  expected=  2852126720
+    rank 3 : checksum=  2852126720  expected=  2852126720
+
+==============================
+ 2) CORE binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 96 
+Rank 0 current logical CPU: 0
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 96 
+Rank 3 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 96 
+Rank 1 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 96 
+Rank 2 current logical CPU: 0
+
+# MPI Broadcast Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Broadcast        : average per-iteration time of the slowest MPI rank
+#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
+#
+# Size(Bytes)	Broadcast(us)	EffectiveBW(MiB/s)
+       1 bytes      4.54 us      0.63 MiB/s
+       2 bytes      4.55 us      1.26 MiB/s
+       4 bytes      4.13 us      2.77 MiB/s
+       8 bytes      4.15 us      5.51 MiB/s
+      16 bytes      4.31 us     10.61 MiB/s
+      32 bytes      3.95 us     23.17 MiB/s
+      64 bytes      3.90 us     46.94 MiB/s
+     128 bytes      3.97 us     92.14 MiB/s
+     256 bytes      4.87 us    150.44 MiB/s
+     512 bytes      4.91 us    298.19 MiB/s
+    1024 bytes      5.01 us    585.32 MiB/s
+    2048 bytes      5.11 us   1146.82 MiB/s
+    4096 bytes      5.51 us   2126.51 MiB/s
+    8192 bytes      5.59 us   4194.07 MiB/s
+   16384 bytes      6.70 us   6997.48 MiB/s
+   32768 bytes     10.81 us   8675.29 MiB/s
+   65536 bytes     19.48 us   9624.14 MiB/s
+  131072 bytes     29.26 us  12814.05 MiB/s
+  262144 bytes     45.59 us  16452.68 MiB/s
+  524288 bytes     76.24 us  19675.97 MiB/s
+ 1048576 bytes    140.61 us  21336.19 MiB/s
+ 2097152 bytes    268.93 us  22310.39 MiB/s
+ 4194304 bytes    524.59 us  22874.97 MiB/s
+ 8388608 bytes   1034.69 us  23195.46 MiB/s
+16777216 bytes   2054.10 us  23367.85 MiB/s
+  Verification data:
+    rank 0 : checksum=  2852126720  expected=  2852126720
+    rank 1 : checksum=  2852126720  expected=  2852126720
+    rank 2 : checksum=  2852126720  expected=  2852126720
+    rank 3 : checksum=  2852126720  expected=  2852126720
+
+==============================
+ 3) SOCKET binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 2 current logical CPU: 0
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 3 current logical CPU: 0
+
+# MPI Broadcast Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Broadcast        : average per-iteration time of the slowest MPI rank
+#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
+#
+# Size(Bytes)	Broadcast(us)	EffectiveBW(MiB/s)
+       1 bytes      4.36 us      0.66 MiB/s
+       2 bytes      4.22 us      1.36 MiB/s
+       4 bytes      3.96 us      2.89 MiB/s
+       8 bytes      3.87 us      5.92 MiB/s
+      16 bytes      3.95 us     11.59 MiB/s
+      32 bytes      3.91 us     23.39 MiB/s
+      64 bytes      3.99 us     45.88 MiB/s
+     128 bytes      3.96 us     92.39 MiB/s
+     256 bytes      4.90 us    149.44 MiB/s
+     512 bytes      4.89 us    299.60 MiB/s
+    1024 bytes      4.93 us    594.70 MiB/s
+    2048 bytes      5.07 us   1154.95 MiB/s
+    4096 bytes      5.11 us   2291.86 MiB/s
+    8192 bytes      5.64 us   4158.93 MiB/s
+   16384 bytes      6.74 us   6958.02 MiB/s
+   32768 bytes     10.82 us   8668.23 MiB/s
+   65536 bytes     19.51 us   9609.20 MiB/s
+  131072 bytes     28.44 us  13186.47 MiB/s
+  262144 bytes     45.43 us  16508.38 MiB/s
+  524288 bytes     79.05 us  18975.90 MiB/s
+ 1048576 bytes    140.09 us  21414.63 MiB/s
+ 2097152 bytes    269.21 us  22287.24 MiB/s
+ 4194304 bytes    524.27 us  22888.96 MiB/s
+ 8388608 bytes   1034.85 us  23191.67 MiB/s
+16777216 bytes   2053.18 us  23378.41 MiB/s
+  Verification data:
+    rank 0 : checksum=  2852126720  expected=  2852126720
+    rank 1 : checksum=  2852126720  expected=  2852126720
+    rank 2 : checksum=  2852126720  expected=  2852126720
+    rank 3 : checksum=  2852126720  expected=  2852126720
+
+==============================
+ 4) NUMA (LDOM) binding
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 15
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 3 current logical CPU: 0
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 2 current logical CPU: 117
+
+# MPI Broadcast Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Broadcast        : average per-iteration time of the slowest MPI rank
+#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
+#
+# Size(Bytes)	Broadcast(us)	EffectiveBW(MiB/s)
+       1 bytes      4.10 us      0.70 MiB/s
+       2 bytes      4.10 us      1.40 MiB/s
+       4 bytes      3.88 us      2.95 MiB/s
+       8 bytes      4.34 us      5.27 MiB/s
+      16 bytes      3.94 us     11.62 MiB/s
+      32 bytes      3.89 us     23.52 MiB/s
+      64 bytes      3.87 us     47.29 MiB/s
+     128 bytes      4.07 us     90.05 MiB/s
+     256 bytes      4.92 us    148.84 MiB/s
+     512 bytes      4.97 us    294.61 MiB/s
+    1024 bytes      5.01 us    584.22 MiB/s
+    2048 bytes      5.17 us   1133.94 MiB/s
+    4096 bytes      5.22 us   2246.86 MiB/s
+    8192 bytes      5.77 us   4064.98 MiB/s
+   16384 bytes      6.95 us   6742.63 MiB/s
+   32768 bytes     10.96 us   8553.88 MiB/s
+   65536 bytes     19.64 us   9547.05 MiB/s
+  131072 bytes     29.15 us  12865.36 MiB/s
+  262144 bytes     44.54 us  16839.61 MiB/s
+  524288 bytes     76.38 us  19637.60 MiB/s
+ 1048576 bytes    140.96 us  21283.03 MiB/s
+ 2097152 bytes    269.34 us  22276.80 MiB/s
+ 4194304 bytes    524.39 us  22883.66 MiB/s
+ 8388608 bytes   1034.70 us  23195.07 MiB/s
+16777216 bytes   2053.30 us  23376.98 MiB/s
+  Verification data:
+    rank 0 : checksum=  2852126720  expected=  2852126720
+    rank 1 : checksum=  2852126720  expected=  2852126720
+    rank 2 : checksum=  2852126720  expected=  2852126720
+    rank 3 : checksum=  2852126720  expected=  2852126720
+
+==============================
+ 5) RANK-AWARE NUMA
+==============================
+Rank 0 running on computenode0
+Rank 0 SLURM info: PROCID=0 LOCALID=0 NODEID=0
+Rank 0 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 0 current logical CPU: 19
+Rank 1 running on computenode1
+Rank 1 SLURM info: PROCID=1 LOCALID=0 NODEID=1
+Rank 1 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 1 current logical CPU: 0
+Rank 2 running on computenode2
+Rank 2 SLURM info: PROCID=2 LOCALID=0 NODEID=2
+Rank 2 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 2 current logical CPU: 11
+Rank 3 running on computenode3
+Rank 3 SLURM info: PROCID=3 LOCALID=0 NODEID=3
+Rank 3 affinity mask: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 
+Rank 3 current logical CPU: 0
+
+# MPI Broadcast Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Broadcast        : average per-iteration time of the slowest MPI rank
+#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
+#
+# Size(Bytes)	Broadcast(us)	EffectiveBW(MiB/s)
+       1 bytes      4.43 us      0.65 MiB/s
+       2 bytes      4.09 us      1.40 MiB/s
+       4 bytes      3.94 us      2.90 MiB/s
+       8 bytes      3.92 us      5.84 MiB/s
+      16 bytes      3.88 us     11.81 MiB/s
+      32 bytes      3.85 us     23.77 MiB/s
+      64 bytes      3.97 us     46.15 MiB/s
+     128 bytes      3.91 us     93.76 MiB/s
+     256 bytes      4.88 us    150.12 MiB/s
+     512 bytes      4.91 us    298.19 MiB/s
+    1024 bytes      5.00 us    585.84 MiB/s
+    2048 bytes      5.13 us   1142.29 MiB/s
+    4096 bytes      5.20 us   2252.78 MiB/s
+    8192 bytes      5.66 us   4144.30 MiB/s
+   16384 bytes      6.95 us   6749.25 MiB/s
+   32768 bytes     11.05 us   8487.35 MiB/s
+   65536 bytes     19.49 us   9618.10 MiB/s
+  131072 bytes     28.68 us  13075.66 MiB/s
+  262144 bytes     45.50 us  16482.69 MiB/s
+  524288 bytes     76.73 us  19548.66 MiB/s
+ 1048576 bytes    140.62 us  21334.80 MiB/s
+ 2097152 bytes    269.15 us  22292.63 MiB/s
+ 4194304 bytes    524.65 us  22872.57 MiB/s
+ 8388608 bytes   1034.86 us  23191.50 MiB/s
+16777216 bytes   2053.75 us  23371.89 MiB/s
+  Verification data:
+    rank 0 : checksum=  2852126720  expected=  2852126720
+    rank 1 : checksum=  2852126720  expected=  2852126720
+    rank 2 : checksum=  2852126720  expected=  2852126720
+    rank 3 : checksum=  2852126720  expected=  2852126720
+
+========================================
+ DONE
+========================================

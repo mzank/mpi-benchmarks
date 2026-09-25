@@ -49,6 +49,23 @@ Benchmark results for the AMD Instinct MI300A architecture are available in the 
 - [2-Nodes (Inter-node)](src/example_03_ring/logs/2nodes/)
 - [4-Nodes (Inter-node)](src/example_03_ring/logs/4nodes/)
 
+### MPI Broadcast Benchmark
+
+Path:
+
+```text
+src/example_04_broadcast/main.c
+```
+
+An MPI broadcast benchmark measuring performance of MPI_Bcast across multiple ranks. See the [Broadcast README](src/example_04_broadcast/README.md) for detailed instructions.
+
+#### Example Results
+Benchmark results for the AMD Instinct MI300A architecture are available in the repository:
+- [1-Node (Intra-node)](src/example_04_broadcast/logs/1node/)
+- [1-Node Scaling](src/example_04_broadcast/logs/1node_scaling/)
+- [2-Nodes (Inter-node)](src/example_04_broadcast/logs/2nodes/)
+- [4-Nodes (Inter-node)](src/example_04_broadcast/logs/4nodes/)
+
 ---
 
 ## Requirements
@@ -149,7 +166,7 @@ sbatch src/example_01_hello/run.slurm
 
 For the Ping-Pong benchmark, multiple scripts are provided for different scenarios (intra-node vs inter-node), including specialized configurations for the AMD Instinct MI300A architecture. See the [Ping-Pong README](src/example_02_pingpong/README.md) for details.
 
-Similarly, the Ring benchmark includes multiple scripts for scaling tests and multi-node execution. See the [Ring README](src/example_03_ring/README.md) for details.
+Similarly, the Ring and Broadcast benchmarks include multiple scripts for scaling tests and multi-node execution. See the [Ring README](src/example_03_ring/README.md) and [Broadcast README](src/example_04_broadcast/README.md) for details.
 
 To check the available CPU binding options supported by your cluster's SLURM configuration, you can run:
 
