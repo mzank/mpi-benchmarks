@@ -77,6 +77,6 @@ At the end of each message size iteration, rank 0 gathers checksums from all ran
 Benchmark results for the AMD Instinct MI300A architecture are available in the `logs/` directory:
 
 - **[1-Node Results](logs/1node/)**: Intra-node performance using standard CPU binding strategies (Cores, Sockets, NUMA) on a single node with 4 AMD MI300A.
-- **[1-Node Scaling Results](logs/1node_scaling/)**: Scaling behavior on a single node as the number of ranks increases.
+- **[1-Node Scaling Results](logs/1node_scaling/)**: Scaling behavior on a single node with 4 AMD MI300A as the number of ranks increases.
 - **[2-Node Results](logs/2nodes/)**: Inter-node performance across two nodes with 4 AMD MI300A.
 - **[4-Node Results](logs/4nodes/)**: Inter-node performance across four nodes with 4 AMD MI300A.
