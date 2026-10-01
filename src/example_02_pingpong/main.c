@@ -207,9 +207,7 @@ int main(int argc, char *argv[])
     if (!sendbuf || !recvbuf)
     {
         fprintf(stderr, "malloc failed\n");
-        free(sendbuf);
-        free(recvbuf);
-        MPI_Abort(MPI_COMM_WORLD, 1);
+        MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
     }
 
     memset(sendbuf, rank, MAX_MSG_SIZE);

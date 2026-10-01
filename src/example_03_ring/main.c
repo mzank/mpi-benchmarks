@@ -264,7 +264,7 @@ int main(int argc, char *argv[])
     if (!sendbuf || !recvbuf)
     {
         fprintf(stderr, "malloc failed\n");
-        MPI_Abort(MPI_COMM_WORLD, 1);
+        MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
     }
 
     memset(sendbuf, rank, MAX_MSG_SIZE);
@@ -284,11 +284,7 @@ int main(int argc, char *argv[])
         if (!all_bw || !all_checksum)
         {
             fprintf(stderr, "malloc failed\n");
-            free(all_bw);
-            free(all_checksum);
-            free(sendbuf);
-            free(recvbuf);
-            MPI_Abort(MPI_COMM_WORLD, 1);
+            MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
         }
     }
 
@@ -425,7 +421,7 @@ int main(int argc, char *argv[])
 
             if (!ok)
             {
-                MPI_Abort(MPI_COMM_WORLD, 1);
+                MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
             }
         }
     }
