@@ -248,15 +248,13 @@ int main(int argc, char *argv[])
 
     memset(buffer, rank == 0 ? 0xAA : 0, MAX_MSG_SIZE);
 
-    double *all_bw = NULL;
     uint64_t *all_checksum = NULL;
 
     if (rank == 0)
     {
-        all_bw = malloc(size * sizeof(double));
         all_checksum = malloc(size * sizeof(uint64_t));
 
-        if (!all_bw || !all_checksum)
+        if (!all_checksum)
         {
             fprintf(stderr, "malloc failed\n");
             MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
@@ -340,22 +338,8 @@ int main(int argc, char *argv[])
             max_bcast_time /
             (1024.0 * 1024.0);
 
-        const double local_bw_MiBs =
-            ((double)msg_size * (size - 1)) /
-            local_bcast_time /
-            (1024.0 * 1024.0);
-
         const uint64_t csum =
             checksum(buffer, msg_size);
-
-        MPI_CHECK(MPI_Gather(&local_bw_MiBs,
-                             1,
-                             MPI_DOUBLE,
-                             all_bw,
-                             1,
-                             MPI_DOUBLE,
-                             0,
-                             MPI_COMM_WORLD));
 
         MPI_CHECK(MPI_Gather(&csum,
                              1,
@@ -421,7 +405,6 @@ int main(int argc, char *argv[])
 
     if (rank == 0)
     {
-        free(all_bw);
         free(all_checksum);
     }
 
