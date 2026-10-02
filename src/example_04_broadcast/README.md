@@ -27,7 +27,7 @@ mpirun -n 4 ./build/bin/example_04_broadcast
 
 ## Running with SLURM
 
-Multiple SLURM scripts are provided to test different communication scenarios. Logs and error reports are automatically saved in the `logs/` directory at the project root.
+Multiple SLURM scripts are provided to test different communication scenarios. Logs and error reports are written to the `logs/` directory at the project root. This is untracked scratch output: it is ignored by version control and can be deleted at any time.
 
 ### 1. Intra-node (Single Node)
 
@@ -101,9 +101,11 @@ Every rank is expected to hold the root's `0xAA` fill pattern in the first `msg_
 
 ## Example Results
 
-Benchmark results for the AMD Instinct MI300A architecture are available in the `logs/` directory:
+Reference results for the AMD Instinct MI300A architecture are committed under `src/example_04_broadcast/logs/`, one subdirectory per SLURM script. Unlike the scratch output written to the project root `logs/`, these results are tracked in version control and serve as the published baseline for each scenario:
 
 - **[1-Node Results](logs/1node/)**: Intra-node performance using standard CPU binding strategies (Cores, Sockets, NUMA) on a single node with 4 AMD MI300A.
 - **[1-Node Scaling Results](logs/1node_scaling/)**: Scaling behavior on a single node with 4 AMD MI300A as the number of ranks increases.
 - **[2-Node Results](logs/2nodes/)**: Inter-node performance across two nodes with 4 AMD MI300A.
 - **[4-Node Results](logs/4nodes/)**: Inter-node performance across four nodes with 4 AMD MI300A.
+
+Each subdirectory holds the result pair `<jobname>_4mi300a.out`/`.err`, together with one topology capture per node: `<jobname>_topo_<task>_4mi300a.out`/`.err`, recording the hostname and `numactl --hardware` report. The multi-node scripts redirect the topology capture to its own file, while the single-node scripts print it inline in the main log, so topology files appear only in the 2-Node and 4-Node Results directories.

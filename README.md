@@ -156,7 +156,7 @@ mpiexec -n 4 ./build/bin/example_01_hello
 
 ## Running on an HPC Cluster (SLURM)
 
-A SLURM submission script is provided for each example. Logs and error reports are automatically saved in the `logs/` directory at the project root.
+A SLURM submission script is provided for each example. Logs and error reports are written to the `logs/` directory at the project root. This is untracked scratch output: it is ignored by version control and can be deleted at any time. Reference results captured from cluster runs are committed separately, per example, under `src/example_0X/logs/`.
 
 Submit the Hello World example with:
 

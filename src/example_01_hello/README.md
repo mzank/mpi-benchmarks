@@ -18,7 +18,7 @@ mpirun -n 4 ./build/bin/example_01_hello
 
 ## Running with SLURM
 
-A SLURM script is provided to run the example on a cluster node. Logs and error reports are automatically saved in the `logs/` directory at the project root.
+A SLURM script is provided to run the example on a cluster node. Logs and error reports are written to the `logs/` directory at the project root. This is untracked scratch output: it is ignored by version control and can be deleted at any time.
 
 ```bash
 sbatch src/example_01_hello/run.slurm
