@@ -65,7 +65,6 @@
  * @param[in] argv Argument vector from the command line.
  *
  * @retval EXIT_SUCCESS Program completed successfully.
- * @retval EXIT_FAILURE MPI initialization or finalization failed.
  */
 int main(int argc, char *argv[])
 {

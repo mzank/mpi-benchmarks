@@ -187,7 +187,7 @@ static uint64_t checksum(const unsigned char *buf, size_t n)
  * @param[in] argv Argument vector from the command line.
  *
  * @retval EXIT_SUCCESS Program completed successfully.
- * @retval EXIT_FAILURE MPI initialization or finalization failed.
+ * @retval EXIT_FAILURE Invalid number of MPI ranks.
  */
 int main(int argc, char *argv[])
 {
@@ -209,7 +209,6 @@ int main(int argc, char *argv[])
         }
 
         MPI_CHECK(MPI_Finalize());
-
         return EXIT_FAILURE;
     }
 
