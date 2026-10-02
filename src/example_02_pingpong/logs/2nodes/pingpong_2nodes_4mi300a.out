@@ -18,6 +18,7 @@ Rank 1 current logical CPU: 0
 # MPI Ping-Pong Benchmark
 #
 # Configuration
+#   MPI ranks        : 2
 #   Max message size : 16777216 bytes
 #   Warmup iterations: 20
 #   Small iterations : 1000
@@ -70,6 +71,7 @@ Rank 1 current logical CPU: 0
 # MPI Ping-Pong Benchmark
 #
 # Configuration
+#   MPI ranks        : 2
 #   Max message size : 16777216 bytes
 #   Warmup iterations: 20
 #   Small iterations : 1000
@@ -122,6 +124,7 @@ Rank 1 current logical CPU: 0
 # MPI Ping-Pong Benchmark
 #
 # Configuration
+#   MPI ranks        : 2
 #   Max message size : 16777216 bytes
 #   Warmup iterations: 20
 #   Small iterations : 1000
@@ -174,6 +177,7 @@ Rank 1 current logical CPU: 108
 # MPI Ping-Pong Benchmark
 #
 # Configuration
+#   MPI ranks        : 2
 #   Max message size : 16777216 bytes
 #   Warmup iterations: 20
 #   Small iterations : 1000
@@ -226,6 +230,7 @@ Rank 1 current logical CPU: 0
 # MPI Ping-Pong Benchmark
 #
 # Configuration
+#   MPI ranks        : 2
 #   Max message size : 16777216 bytes
 #   Warmup iterations: 20
 #   Small iterations : 1000
