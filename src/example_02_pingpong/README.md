@@ -54,6 +54,31 @@ sbatch src/example_02_pingpong/run_2nodes.slurm
 
 This script ensures one task is placed per node to force communication across the cluster interconnect.
 
+## Configuration Output
+
+Before the result table, the benchmark prints a configuration header, preceded by the per-rank environment information (processor name, SLURM IDs, and CPU affinity):
+
+```text
+# MPI Ping-Pong Benchmark
+#
+# Configuration
+#   MPI ranks        : 2
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Latency          : one-way latency
+#   EffectiveBW      : effective bandwidth
+```
+
+- **MPI ranks**: Number of ranks in `MPI_COMM_WORLD` (must be 2).
+- **Max message size**: Upper bound of the measured message sizes (16 MiB).
+- **Warmup / Small / Large iterations**: Values of `WARMUP`, `ITER_SMALL`, and `ITER_LARGE`.
+- **MPI_Wtick**: Resolution of the MPI wall-clock timer, useful when interpreting sub-microsecond measurements.
+
 ## Expected Output
 
 The benchmark outputs a table with the following columns:

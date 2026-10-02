@@ -19,15 +19,24 @@
  *
  * Expected output:
  * @code
- * # MPI Ping-Pong Benchmark
  * ...
+ * # MPI Ping-Pong Benchmark
+ * #
+ * # Configuration
+ * #   MPI ranks        : 2
+ * #   Max message size : 16777216 bytes
+ * #   Warmup iterations: 20
+ * #   Small iterations : 1000
+ * #   Large iterations : 100
+ * #   MPI_Wtick        : 1.000000000e-09 seconds
+ * #
  * # Metrics
  * #   Latency          : one-way latency
  * #   EffectiveBW      : effective bandwidth
  * #
  * # Size(Bytes)   Latency(us)     EffectiveBW(MiB/s)
- *        1 bytes      0.45 us      4.22 MiB/s
- *        2 bytes      0.45 us      8.42 MiB/s
+ *        1 bytes      0.45 us      2.12 MiB/s
+ *        2 bytes      0.45 us      4.24 MiB/s
  * ...
  * @endcode
  *
