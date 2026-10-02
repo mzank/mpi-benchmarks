@@ -1,6 +1,7 @@
 /**
  * @file main.c
- * @brief MPI Broadcast benchmark measuring broadcast time and effective bandwidth.
+ * @brief MPI Broadcast benchmark measuring broadcast time and effective
+ *        bandwidth.
  *
  * This benchmark measures the performance of a broadcast communication pattern
  * where rank 0 broadcasts data to all other ranks using MPI_Bcast.
@@ -144,7 +145,8 @@ static void print_slurm_info(const int rank)
 /**
  * @brief Performs a broadcast operation of data from the root process.
  *
- * Broadcasts data from the specified root rank to all processes in the communicator.
+ * Broadcasts data from the specified root rank to all processes in the
+ * communicator.
  *
  * @param[in,out] buffer Pointer to the data buffer.
  * @param[in] count Number of bytes to broadcast.
@@ -274,8 +276,11 @@ int main(int argc, char *argv[])
         printf("#   MPI_Wtick        : %.9e seconds\n", MPI_Wtick());
         printf("#\n");
         printf("# Metrics\n");
-        printf("#   Broadcast        : average per-iteration time of the slowest MPI rank\n");
-        printf("#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time\n");
+        printf("#   Broadcast        : "
+               "average per-iteration time of the slowest MPI rank\n");
+        printf("#   EffectiveBW      : "
+               "aggregate data volume delivered to non-root ranks "
+               "per unit time\n");
         printf("#\n");
         printf("# Size(Bytes)\tBroadcast(us)\tEffectiveBW(MiB/s)\n");
     }
@@ -368,7 +373,8 @@ int main(int argc, char *argv[])
                     ok = 0;
 
                     fprintf(stderr,
-                            "Verification failed: rank %d expected %" PRIu64 " got %" PRIu64 "\n",
+                            "Verification failed: "
+                            "rank %d expected %" PRIu64 " got %" PRIu64 "\n",
                             r,
                             expected,
                             all_checksum[r]);

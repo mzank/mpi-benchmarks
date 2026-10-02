@@ -389,7 +389,8 @@ int main(int argc, char *argv[])
                     ok = 0;
 
                     fprintf(stderr,
-                            "Verification failed: rank %d expected %" PRIu64 " got %" PRIu64 "\n",
+                            "Verification failed: "
+                            "rank %d expected %" PRIu64 " got %" PRIu64 "\n",
                             r,
                             expected,
                             all_checksum[r]);

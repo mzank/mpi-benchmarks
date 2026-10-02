@@ -143,7 +143,8 @@ static void print_slurm_info(const int rank)
  * @brief Entry point of the MPI application.
  *
  * Initializes the MPI runtime, validates the process count, performs the warmup
- * and measurement loops for increasing message sizes, and finalizes MPI cleanly.
+ * and measurement loops for increasing message sizes, and finalizes MPI
+ * cleanly.
  *
  * @param[in] argc Argument count from the command line.
  * @param[in] argv Argument vector from the command line.
@@ -234,7 +235,9 @@ int main(int argc, char *argv[])
 
     const int peer = (rank == 0) ? 1 : 0;
 
-    for (size_t msg_size = 1; msg_size <= MAX_MSG_SIZE; msg_size *= 2)
+    for (size_t msg_size = 1;
+         msg_size <= MAX_MSG_SIZE;
+         msg_size *= 2)
     {
         if (msg_size > (size_t)INT_MAX)
             break;
