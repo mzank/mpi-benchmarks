@@ -153,8 +153,8 @@ static void print_slurm_info(const int rank)
  */
 int main(int argc, char *argv[])
 {
-    int rank = 0;
-    int size = 0;
+    int rank = -1;
+    int size = -1;
 
     MPI_CHECK(MPI_Init(&argc, &argv));
     MPI_CHECK(MPI_Comm_set_errhandler(MPI_COMM_WORLD, MPI_ERRORS_RETURN));
