@@ -2,7 +2,7 @@
 
 ## Overview
 
-This example implements an MPI ring benchmark to measure aggregate communication performance in a ring pattern. Each rank sends data to its successor and receives from its predecessor.
+This example implements an MPI ring benchmark to measure aggregate communication performance in a ring pattern. Each rank sends data to its successor and receives from its predecessor using non-blocking communication (`MPI_Isend`/`MPI_Irecv`).
 
 The benchmark performs the following steps:
 1.  **Environment Check**: Prints CPU affinity and SLURM environment information for each rank.
@@ -11,7 +11,7 @@ The benchmark performs the following steps:
     *   Small messages (≤ 8 KiB) use 1,000 iterations.
     *   Large messages (> 8 KiB) use 100 iterations.
 4.  **Verification**: Calculates a checksum of the received data to ensure integrity.
-5.  **Reporting**: Calculates and displays the average exchange time (μs) and aggregate ring bandwidth (MiB/s).
+5.  **Reporting**: Calculates and displays the average exchange time (μs) and aggregate ring bandwidth (MiB/s), timed on rank 0.
 
 ## Requirements
 
@@ -61,16 +61,41 @@ sbatch src/example_03_ring/run_4nodes.slurm
 
 These scripts ensure tasks are distributed across nodes to evaluate the cluster interconnect performance in a ring topology.
 
+## Configuration Output
+
+Before the result table, the benchmark prints a configuration header, preceded by the per-rank environment information (processor name, SLURM IDs, and CPU affinity):
+
+```text
+# MPI Ring Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Exchange         : full ring exchange time
+#   AggregateRingBW  : aggregate bandwidth across the ring
+```
+
+- **MPI ranks**: Number of ranks in `MPI_COMM_WORLD`.
+- **Max message size**: Upper bound of the measured message sizes (16 MiB).
+- **Warmup / Small / Large iterations**: Values of `WARMUP`, `ITER_SMALL`, and `ITER_LARGE`.
+- **MPI_Wtick**: Resolution of the MPI wall-clock timer, useful when interpreting sub-microsecond measurements.
+
 ## Expected Output
 
 The benchmark outputs a table with the following columns:
 - **Size(Bytes)**: The message size in bytes.
-- **Exchange(us)**: The average time for one full ring exchange in microseconds.
-- **AggregateRingBW(MiB/s)**: The achieved aggregate bandwidth across the ring in MiB/s.
+- **Exchange(us)**: The average time for one full ring exchange in microseconds, timed on rank 0. Each exchange completes both the send and the receive via `MPI_Waitall`, so every iteration re-synchronizes all ranks and no rank can run more than one iteration ahead. The timing therefore reflects the ring-wide critical path. Per-iteration scheduler jitter on individual ranks is not captured, as no cross-rank reduction is performed.
+- **AggregateRingBW(MiB/s)**: The achieved aggregate bandwidth across the ring in MiB/s, computed as the total volume moved around the ring (`msg_size * size`) divided by the exchange time above.
 
 ## Verification
 
-At the end of each message size iteration, rank 0 gathers checksums from all ranks to verify that the data was correctly received from the respective predecessors. For the maximum message size, detailed verification data per rank is printed.
+At the end of each message size iteration, rank 0 gathers two values from all ranks: the locally computed bandwidth and a checksum. The checksum confirms that the data was correctly received from the respective predecessors. For the maximum message size, the per-rank bandwidth and checksum are printed as detailed verification data.
 
 ## Example Results
 

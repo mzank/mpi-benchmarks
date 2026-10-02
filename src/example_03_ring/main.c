@@ -20,15 +20,24 @@
  *
  * Expected output:
  * @code
- * # MPI Ring Benchmark
  * ...
+ * # MPI Ring Benchmark
+ * #
+ * # Configuration
+ * #   MPI ranks        : 4
+ * #   Max message size : 16777216 bytes
+ * #   Warmup iterations: 20
+ * #   Small iterations : 1000
+ * #   Large iterations : 100
+ * #   MPI_Wtick        : 1.000000000e-09 seconds
+ * #
  * # Metrics
  * #   Exchange         : full ring exchange time
  * #   AggregateRingBW  : aggregate bandwidth across the ring
  * #
  * # Size(Bytes)   Exchange(us)    AggregateRingBW(MiB/s)
- *        1 bytes      1.20 us        3.18 MiB/s
- *        2 bytes      1.25 us        6.10 MiB/s
+ *        1 bytes      1.20 us      3.18 MiB/s
+ *        2 bytes      1.25 us      6.10 MiB/s
  * ...
  * @endcode
  *
@@ -147,6 +156,14 @@ static void print_slurm_info(const int rank)
  *
  * Each rank sends data to the next rank and receives from the previous rank.
  *
+ * `MPI_Waitall` blocks until both the send and the receive have completed, so
+ * every call is a ring-wide synchronization point: a rank can only complete
+ * iteration i once its predecessor has posted the send for iteration i, and
+ * that dependency closes around the ring. No rank can therefore advance more
+ * than one iteration ahead of the others, which is why the timed loop in
+ * main() measures the ring-wide critical path and the reported metrics can be
+ * derived from rank 0's local timing alone.
+ *
  * @param[in] sendbuf Pointer to the send buffer.
  * @param[out] recvbuf Pointer to the receive buffer.
  * @param[in] count Number of bytes to exchange.
@@ -201,8 +218,9 @@ static uint64_t checksum(const unsigned char *buf, size_t n)
  * @brief Entry point of the MPI application.
  *
  * Initializes the MPI runtime, validates the process count, performs the warmup
- * and measurement loops for increasing message sizes in a ring pattern,
- * verifies the data integrity, and finalizes MPI cleanly.
+ * and measurement loops for increasing message sizes in a ring pattern, gathers
+ * the per-rank bandwidth and a data-integrity checksum from every rank, and
+ * finalizes MPI cleanly.
  *
  * @param[in] argc Argument count from the command line.
  * @param[in] argv Argument vector from the command line.
