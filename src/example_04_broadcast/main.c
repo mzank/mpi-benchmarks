@@ -192,7 +192,8 @@ static uint64_t checksum(const unsigned char *buf, size_t n)
  *
  * Initializes the MPI runtime, validates the process count, performs the warmup
  * and measurement loops for increasing message sizes in a broadcast pattern,
- * verifies the data integrity, and finalizes MPI cleanly.
+ * clears the non-root receive buffers after warmup so that verification covers
+ * the timed broadcasts, verifies the data integrity, and finalizes MPI cleanly.
  *
  * @param[in] argc Argument count from the command line.
  * @param[in] argv Argument vector from the command line.

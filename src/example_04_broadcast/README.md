@@ -6,7 +6,7 @@ This example implements an MPI broadcast benchmark to measure broadcast communic
 
 The benchmark performs the following steps:
 1.  **Environment Check**: Prints CPU affinity and SLURM environment information for each rank.
-2.  **Warmup**: Executes 20 iterations of the broadcast exchange to prime the network and libraries.
+2.  **Warmup**: Executes 20 iterations of the broadcast exchange to prime the network and libraries, then clears the receive buffers on all non-root ranks before the timed loop begins.
 3.  **Measurement**: Iterates through message sizes from 1 byte to 16 MiB (powers of 2).
     *   Small messages (≤ 8 KiB) use 1,000 iterations.
     *   Large messages (> 8 KiB) use 100 iterations.
@@ -96,6 +96,8 @@ The benchmark outputs a table with the following columns:
 ## Verification
 
 At the end of each message size iteration, rank 0 gathers checksums from all ranks to verify that the data was correctly received from rank 0. For the maximum message size, detailed verification data per rank is printed.
+
+Every rank is expected to hold the root's `0xAA` fill pattern in the first `msg_size` bytes, and only the first `msg_size` bytes are checksummed. Root's buffer is never cleared; the non-root buffers are cleared to zero immediately after the warmup broadcast. That clear is what gives the check teeth: the warmup has already filled every rank with the root's pattern, so without it the checksum would still match even if none of the timed broadcasts delivered any data. Clearing the non-root buffers first means the checksums can only pass if the timed broadcasts actually repopulated them.
 
 ## Example Results
 
