@@ -219,16 +219,12 @@ int main(int argc, char *argv[])
         printf("# MPI Ping-Pong Benchmark\n");
         printf("#\n");
         printf("# Configuration\n");
-        printf("#   Max message size : %zu bytes\n",
-               MAX_MSG_SIZE);
-        printf("#   Warmup iterations: %d\n",
-               WARMUP);
-        printf("#   Small iterations : %d\n",
-               ITER_SMALL);
-        printf("#   Large iterations : %d\n",
-               ITER_LARGE);
-        printf("#   MPI_Wtick        : %.9e seconds\n",
-               MPI_Wtick());
+        printf("#   MPI ranks        : %d\n", size);
+        printf("#   Max message size : %zu bytes\n", MAX_MSG_SIZE);
+        printf("#   Warmup iterations: %d\n", WARMUP);
+        printf("#   Small iterations : %d\n", ITER_SMALL);
+        printf("#   Large iterations : %d\n", ITER_LARGE);
+        printf("#   MPI_Wtick        : %.9e seconds\n", MPI_Wtick());
         printf("#\n");
         printf("# Metrics\n");
         printf("#   Latency          : one-way latency\n");
