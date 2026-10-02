@@ -61,6 +61,31 @@ sbatch src/example_04_broadcast/run_4nodes.slurm
 
 These scripts ensure tasks are distributed across nodes to evaluate the cluster interconnect performance for broadcast communication.
 
+## Configuration Output
+
+Before the result table, the benchmark prints a configuration header, preceded by the per-rank environment information (processor name, SLURM IDs, and CPU affinity):
+
+```text
+# MPI Broadcast Benchmark
+#
+# Configuration
+#   MPI ranks        : 4
+#   Max message size : 16777216 bytes
+#   Warmup iterations: 20
+#   Small iterations : 1000
+#   Large iterations : 100
+#   MPI_Wtick        : 1.000000000e-09 seconds
+#
+# Metrics
+#   Broadcast        : average per-iteration time of the slowest MPI rank
+#   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
+```
+
+- **MPI ranks**: Number of ranks in `MPI_COMM_WORLD`.
+- **Max message size**: Upper bound of the measured message sizes (16 MiB).
+- **Warmup / Small / Large iterations**: Values of `WARMUP`, `ITER_SMALL`, and `ITER_LARGE`.
+- **MPI_Wtick**: Resolution of the MPI wall-clock timer, useful when interpreting sub-microsecond measurements.
+
 ## Expected Output
 
 The benchmark outputs a table with the following columns:

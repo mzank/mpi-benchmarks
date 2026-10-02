@@ -20,15 +20,24 @@
  *
  * Expected output:
  * @code
- * # MPI Broadcast Benchmark
  * ...
+ * # MPI Broadcast Benchmark
+ * #
+ * # Configuration
+ * #   MPI ranks        : 4
+ * #   Max message size : 16777216 bytes
+ * #   Warmup iterations: 20
+ * #   Small iterations : 1000
+ * #   Large iterations : 100
+ * #   MPI_Wtick        : 1.000000000e-09 seconds
+ * #
  * # Metrics
  * #   Broadcast        : average per-iteration time of the slowest MPI rank
  * #   EffectiveBW      : aggregate data volume delivered to non-root ranks per unit time
  * #
  * # Size(Bytes)   Broadcast(us)    EffectiveBW(MiB/s)
- *        1 bytes      1.20 us        3.18 MiB/s
- *        2 bytes      1.25 us        6.10 MiB/s
+ *        1 bytes      1.20 us      2.38 MiB/s
+ *        2 bytes      1.25 us      4.58 MiB/s
  * ...
  * @endcode
  *
