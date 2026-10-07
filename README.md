@@ -1,5 +1,8 @@
 # MPI Benchmarks
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-green.svg)](https://mzank.github.io/mpi-benchmarks/)
+
 A collection of MPI benchmark and example applications implemented in C11. This project focuses on developing, building, documenting, and executing MPI applications on both local systems and HPC clusters using SLURM.
 
 ---
